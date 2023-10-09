@@ -3,135 +3,171 @@
 <html lang="es">
 <head>
     <!-- Datos que describen el documento -->
-    <meta name="author" content="Yago"/>
-    <meta name="description" content="plantilla del proyecto"/>
+    <meta name="author" content="Yago Fernandez Lopez"/>
+    <meta name="description" content="Información, datos y algunas aficiones y gustos personales"/>
     <meta name="keywords" content="aquí cada documento debe tener la lista de las palabras clave del mismo separadas por comas" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta charset="UTF-8" />
-    <title>Sobremi</title>
+    <title>EscritorioVirtual</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
 </head>
 
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
-    <h1>Sobre mi</h1>
-    <p>En desarrollo</p>
+    <header>
+        <h1>Escritorio Virtual</h1>
+            <p>En desarrollo</p>
+            <nav>
+                <a title="Agenda" accesskey="A" tabindex="1" href= "agenda.html">Agenda</a>
+                <a title="Juegos" accesskey="J" tabindex="2" href= "juegos.html">Juegos</a>
+                <a title="Meteorologia" accesskey="M" tabindex="3" href= "meteorologia.html">Meteorologia</a>
+                <a title="Noticias" accesskey="N" tabindex="4" href= "noticias.html">Noticias</a>
+                <a title="Sobremi" accesskey="S" tabindex="5" href= "sobremi.html">Sobremi</a>
+                <a title="Viajes" accesskey="V" tabindex="6" href= "viajes.html">Viajes</a>
+                <a title="EscritorioVirtual" accesskey="E" tabindex="7" href= "index.html">EscritorioVirtual</a>
+            </nav>
+    </header>
+    <section>
         <h2>Informacion Personal</h2>
-            <h3>Nombre</h3>
-                <p>-Yago</p>
-            <h3>Apellidos</h3>
-                <p>-Fernandez Lopez</p>
-            <h3>UO</h3>
-                <p>-UO289549</p>
-            <h3>Correo electrónico</h3>
-                <p>-uo289549@uniovi.es</p>
-            <h3>Presentacion</h3>
-                <p>Soy Yago Fernández López, nací en A Coruña y actualmente vivo en Oviedo debido a que estudio Ingeniería Informática en la Universidad De Oviedo, actualmente curso el tercer año del grado y estoy matriculado en las 10 asignaturas de 3º</p>
+            <p>Yago Fernandez Lopez</p>
+            <p>UO289549</p>
+            <p>uo289549@uniovi.es</p>
+            <p>Soy Yago Fernández López, nací en A Coruña y actualmente vivo en Oviedo debido a que estudio Ingeniería Informática en la Universidad De Oviedo, actualmente curso el tercer año del grado y estoy matriculado en las 10 asignaturas de 3º</p>
             <picture>
-                <source media="(max-width:465px)" srcset="multimedia/archivosGraficos/MiFoto100.jpg">
-                <source media="(max-width:799px)" srcset="multimedia/archivosGraficos/MiFoto200.jpg">
-                <source media="(min-width:800px)" srcset="multimedia/archivosGraficos/MiFoto300.jpg">
+                <source media="(max-width:465px)" srcset="multimedia/archivosGraficos/MiFoto100.jpg"/>
+                <source media="(max-width:799px)" srcset="multimedia/archivosGraficos/MiFoto200.jpg"/>
+                <source media="(min-width:800px)" srcset="multimedia/archivosGraficos/MiFoto300.jpg"/>
                 <img src="multimedia/archivosGraficos/MiFoto300.jpg" alt="Foto Personal"/>
             </picture>
-            <h3>Aficiones</h3>
+    </section>
+    <section>
+        <h2>Aficiones</h2>
+        <ul>
+            <li>Videojuegos
                 <ul>
-                    <li>Videojuegos
-                        <ul>
-                            <li>Call Of Dutty</li>
-                            <li>The Last Of Us</li>
-                            <li>Assassin's Creed
-                                <img alt="Portada del juego" src="multimedia/archivosGraficos/PortadaJuego.jpg">
-                            </li>
-                            <li>Uncharted</li>
-                            <li>Tom Raider</li>
-                        </ul>
-                    </li>
-                    <li>Peliculas</li>
-                    <li>Baloncesto</li>
-                    <li>
-                        <a href="https://www.formula1.com/" title="Formla 1">Formula 1</a>
-                        <video src="multimedia/archivosVideos/Video-de-Formula1.mp4" controls preload="auto"></video>
-                    </li>
-                    <li>Remo</li>
+                    <li>Call Of Dutty</li>
+                    <li>The Last Of Us</li>
+                    <li>Assassin's Creed</li>
+                    <li>Uncharted</li>
+                    <li>Tom Raider</li>
                 </ul>
-            <h3>Grupos musicales y cantantes favoritos</h3>
-                <ol>
-                    <li>AC/DC
-                        <audio src="multimedia/archivosAudios/ACDC-Highway-to-Hell-Official-Video.mp3" controls></audio>
-                    </li>
-                    <li>Melendi</li>
-                    <li>David Guetta</li>
-                    <li>Avicci</li>
-                    <li>Quevedo</li>
-                </ol>
-            <h3>5 asignaturas que mas me han gustado</h3>
-                <dl>
-                    <dt>Comunicación Persona-Maquina</dt>
-                        <dd>Asignatura en la que nos enseñan a programar interfaces gráficas en java y todo lo visual acerca de los programas</dd>
-                    <dt>Estructuras de Datos</dt>
-                        <dd>Asignatura en la que aprendemos distintas estructuras de datos para la programación</dd>
-                    <dt>Metodología de la Programación</dt>
-                        <dd>Asignatura en la que nos enseñan las tecnicas fundamentales de la programación orientada a objetos</dd>
-                    <dt>Tecnología y Paradigmas de Programación</dt>
-                        <dd>Asignatura en la que aprendemos el paradigma funcional y programación concurrente</dd>
-                    <dt>Sistemas Operativos</dt>
-                        <dd>Asignatura en la que nos enseñan el funcionamiento de un sistema operativo</dd>
-                </dl>
-            <h3>Temperatura media anual A Coruña</h3>
-            <table>
-                <tr>
-                    <th>2022</th>
-                    <td>15.5</td>
-                </tr>
-                <tr>
-                    <th>2021</th>
-                    <td>14.9</td>
-                </tr>
-                <tr>
-                    <th>2020</th>
-                    <td>15.4</td>
-                </tr>
-                <tr>
-                    <th>2019</th>
-                    <td>14.9</td>
-                </tr>
-                <tr>
-                    <th>2018</th>
-                    <td>14.6</td>
-                </tr>
-                <tr>
-                    <th>2017</th>
-                    <td>15.1</td>
-                </tr>
-                <tr>
-                    <th>2016</th>
-                    <td>14.7</td>
-                </tr>
-                <tr>
-                    <th>2015</th>
-                    <td>14.8</td>
-                </tr>
-                <tr>
-                    <th>2014</th>
-                    <td>15.1</td>
-                </tr>
-                <tr>
-                    <th>2013</th>
-                    <td>14.6</td>
-                </tr>
-            </table>
-            <p>Datos consultados en 
-                <a href="https://www.tutiempo.net/clima/ws-80010.html" title="enlace a la pagina del clima">TuTiempo.net</a>
-            </p>
-    <nav>
-        <a title="Agenda" accesskey="A" tabindex="1" href= "agenda.html">Agenda</a>
-        <a title="Juegos" accesskey="J" tabindex="2" href= "juegos.html">Juegos</a>
-        <a title="Meteorologia" accesskey="M" tabindex="3" href= "meteorologia.html">Meteorologia</a>
-        <a title="Noticias" accesskey="N" tabindex="4" href= "noticias.html">Noticias</a>
-        <a title="Sobremi" accesskey="S" tabindex="5" href= "sobremi.html">Sobremi</a>
-        <a title="Viajes" accesskey="V" tabindex="6" href= "viajes.html">Viajes</a>
-        <a title="EscritorioVirtual" accesskey="E" tabindex="7" href= "index.html">EscritorioVirtual</a>
-    </nav>
+            </li>
+            <li>Peliculas</li>
+            <li>Baloncesto</li>
+            <li>
+                <a href="https://www.formula1.com/" title="Formla 1">Formula 1</a>
+            </li>
+            <li>Remo</li>
+        </ul>
+        <img alt="Portada del Assassin's Creed" src="multimedia/archivosGraficos/PortadaJuego.jpg"/>
+        <video controls preload="auto">
+            <source src="multimedia/archivosVideos/Video-de-Formula1.mp4" type="video/mp4"/>
+            <source src="multimedia/archivosVideos/Video-de-Formula1.webm" type="video/webm"/>
+        </video>
+    </section>
+    <section>
+        <h2>Grupos musicales y cantantes favoritos</h2>
+        <ol>
+            <li>AC/DC</li>
+            <li>Melendi</li>
+            <li>David Guetta</li>
+            <li>Avicci</li>
+            <li>Quevedo</li>
+        </ol>
+        <audio controls>
+            <source src="multimedia/archivosAudios/ACDC-Highway-to-Hell-Official-Video.mp3" type="audio/mpeg"/>
+            <source src="multimedia/archivosAudios/ACDC-Highway-to-Hell-Official-Video.wav" type="audio/wav"/>
+        </audio>
+    </section>
+    <section>
+        <h2>5 asignaturas que mas me han gustado</h2>
+            <dl>
+                <dt>Comunicación Persona-Maquina</dt>
+                    <dd>Asignatura en la que nos enseñan a programar interfaces gráficas en java y todo lo visual acerca de los programas</dd>
+                <dt>Estructuras de Datos</dt>
+                    <dd>Asignatura en la que aprendemos distintas estructuras de datos para la programación</dd>
+                <dt>Metodología de la Programación</dt>
+                    <dd>Asignatura en la que nos enseñan las tecnicas fundamentales de la programación orientada a objetos</dd>
+                <dt>Tecnología y Paradigmas de Programación</dt>
+                    <dd>Asignatura en la que aprendemos el paradigma funcional y programación concurrente</dd>
+                <dt>Sistemas Operativos</dt>
+                    <dd>Asignatura en la que nos enseñan el funcionamiento de un sistema operativo</dd>
+            </dl>
+    </section>
+    <aside>
+        <table>
+            <caption>Temperatura media anual A Coruña</caption>
+            <tr>
+                <td>fila/columna</td>
+                <th>Temp media</th>
+                <th>Temp max media</th>
+                <th>Temp min media</th>
+            </tr>
+            <tr>
+                <th>2022</th>
+                <td>15.5</td>
+                <td>19.0</td>
+                <td>12.9</td>
+            </tr>
+            <tr>
+                <th>2021</th>
+                <td>14.9</td>
+                <td>18.1</td>
+                <td>12.3</td>
+            </tr>
+            <tr>
+                <th>2020</th>
+                <td>15.4</td>
+                <td>18.5</td>
+                <td>12.8</td>
+            </tr>
+            <tr>
+                <th>2019</th>
+                <td>14.9</td>
+                <td>17.9</td>
+                <td>12.2</td>
+            </tr>
+            <tr>
+                <th>2018</th>
+                <td>14.6</td>
+                <td>17.6</td>
+                <td>12.1</td>
+            </tr>
+            <tr>
+                <th>2017</th>
+                <td>15.1</td>
+                <td>18.5</td>
+                <td>12.2</td>
+            </tr>
+            <tr>
+                <th>2016</th>
+                <td>14.7</td>
+                <td>18.0</td>
+                <td>12.1</td>
+            </tr>
+            <tr>
+                <th>2015</th>
+                <td>14.8</td>
+                <td>17.7</td>
+                <td>12.5</td>
+            </tr>
+            <tr>
+                <th>2014</th>
+                <td>15.1</td>
+                <td>18.4</td>
+                <td>12.7</td>
+            </tr>
+            <tr>
+                <th>2013</th>
+                <td>14.6</td>
+                <td>18.0</td>
+                <td>12.0</td>
+            </tr>
+        </table>
+        <p>Datos consultados en 
+            <a href="https://www.tutiempo.net/clima/ws-80010.html" title="enlace a la pagina del clima">TuTiempo.net</a>
+        </p>
+    </aside>
 </body>
 </html>
