@@ -17,7 +17,6 @@
     <!-- Datos con el contenidos que aparece en el navegador -->
     <header>
         <h1>Escritorio Virtual</h1>
-            <p>En desarrollo</p>
             <nav>
                 <a title="Agenda" accesskey="A" tabindex="1" href= "agenda.html">Agenda</a>
                 <a title="Juegos" accesskey="J" tabindex="2" href= "juegos.html">Juegos</a>
@@ -99,70 +98,70 @@
         <table>
             <caption>Temperatura media anual A Coruña</caption>
             <tr>
-                <td>fila/columna</td>
-                <th>Temp media</th>
-                <th>Temp max media</th>
-                <th>Temp min media</th>
+                <th scope="col" id="año">Año</th>
+                <th scope="col" id="tempMedia">Temp media</th>
+                <th scope="col" id="tempMax">Temp max media</th>
+                <th scope="col" id="tempMin">Temp min media</th>
             </tr>
             <tr>
-                <th>2022</th>
-                <td>15.5</td>
-                <td>19.0</td>
-                <td>12.9</td>
+                <th scope="row" id="2022" headers="año">2022</th>
+                <td headers="2022 tempMedia">15.5</td>
+                <td headers="2022 tempMax">19.0</td>
+                <td headers="2022 tempMin">12.9</td>
             </tr>
             <tr>
-                <th>2021</th>
-                <td>14.9</td>
-                <td>18.1</td>
-                <td>12.3</td>
+                <th scope="row" id="2021" headers="año">2021</th>
+                <td headers="2021 tempMedia">14.9</td>
+                <td headers="2021 tempMax">18.1</td>
+                <td headers="2021 tempMin">12.3</td>
             </tr>
             <tr>
-                <th>2020</th>
-                <td>15.4</td>
-                <td>18.5</td>
-                <td>12.8</td>
+                <th scope="row" id="2020" headers="año">2020</th>
+                <td headers="2020 tempMedia">15.4</td>
+                <td headers="2020 tempMax">18.5</td>
+                <td headers="2020 tempMin">12.8</td>
             </tr>
             <tr>
-                <th>2019</th>
-                <td>14.9</td>
-                <td>17.9</td>
-                <td>12.2</td>
+                <th scope="row" id="2019" headers="año">2019</th>
+                <td headers="2019 tempMedia">14.9</td>
+                <td headers="2019 tempMax">17.9</td>
+                <td headers="2019 tempMin">12.2</td>
             </tr>
             <tr>
-                <th>2018</th>
-                <td>14.6</td>
-                <td>17.6</td>
-                <td>12.1</td>
+                <th scope="row" id="2018" headers="año">2018</th>
+                <td headers="2018 tempMedia">14.6</td>
+                <td headers="2018 tempMax">17.6</td>
+                <td headers="2018 tempMin">12.1</td>
             </tr>
             <tr>
-                <th>2017</th>
-                <td>15.1</td>
-                <td>18.5</td>
-                <td>12.2</td>
+                <th scope="row" id="2017" headers="año">2017</th>
+                <td headers="2017 tempMedia">15.1</td>
+                <td headers="2017 tempMax">18.5</td>
+                <td headers="2017 tempMin">12.2</td>
             </tr>
             <tr>
-                <th>2016</th>
-                <td>14.7</td>
-                <td>18.0</td>
-                <td>12.1</td>
+                <th scope="row" id="2016" headers="año">2016</th>
+                <td headers="2016 tempMedia">14.7</td>
+                <td headers="2016 tempMax">18.0</td>
+                <td headers="2016 tempMin">12.1</td>
             </tr>
             <tr>
-                <th>2015</th>
-                <td>14.8</td>
-                <td>17.7</td>
-                <td>12.5</td>
+                <th scope="row" id="2015" headers="año">2015</th>
+                <td headers="2015 tempMedia">14.8</td>
+                <td headers="2015 tempMax">17.7</td>
+                <td headers="2015 tempMin">12.5</td>
             </tr>
             <tr>
-                <th>2014</th>
-                <td>15.1</td>
-                <td>18.4</td>
-                <td>12.7</td>
+                <th scope="row" id="2014" headers="año">2014</th>
+                <td headers="2014 tempMedia">15.1</td>
+                <td headers="2014 tempMax">18.4</td>
+                <td headers="2014 tempMin">12.7</td>
             </tr>
             <tr>
-                <th>2013</th>
-                <td>14.6</td>
-                <td>18.0</td>
-                <td>12.0</td>
+                <th scope="row" id="2013" headers="año">2013</th>
+                <td headers="2013 tempMedia">14.6</td>
+                <td headers="2013 tempMax">18.0</td>
+                <td headers="2013 tempMin">12.0</td>
             </tr>
         </table>
         <p>Datos consultados en 
