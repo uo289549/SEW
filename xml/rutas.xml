@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rutas SYSTEM "rutas.dtd">
+<rutas>
+    <ruta>
+        <nombre>Ulsanbawi Rock</nombre>
+        <tipo>Senderismo</tipo>
+        <medioTransporte>A pie</medioTransporte>
+        <duracion>3,5 horas</duracion>
+        <agencia>Sin agencia</agencia>
+        <descripcion>Caminata de 3,8km, unas tres horas y media ida y vuelta, con un ascenso a la roca Ulsanbawi para finalizar, desde la que vamos a tener unas vistas increíbles.</descripcion>
+        <personasAdecuadas>Personas en 
+            buena forma física</personasAdecuadas>
+        <lugarInicio>Seoraksan National Park</lugarInicio>
+        <direccionInicio>Seorak-dong, Sokcho-si, Gangwon-do, Corea del Sur</direccionInicio>
+        <coordenadas>38.19327621589622, 128.47579029604157, 873</coordenadas>
+        <referencias>https://www.tripadvisor.es/Attraction_Review-g317129-d3808309-Reviews-Ulsanbawi_Rock-Sokcho_Gangwon_do.html</referencias>
+        <referencias>https://en.wikipedia.org/wiki/Ulsanbawi</referencias>
+        <referencias>https://es.wikiloc.com/rutas-senderismo/seoraksan-national-park-dir-ulsanbawi-rock-62983271</referencias>
+        <recomendacion>8</recomendacion>
+        <hitos>
+            <hito>
+                <nombreHito>Llegar a mirador</nombreHito>
+                <descripcionHito>Llegar al mirador de las escaleras</descripcionHito>
+                <coordenadasHito>38.19203145233, 128.47285727554274, 654</coordenadasHito>
+                <distanciaDesdeAnterior unidades="kilometros">0</distanciaDesdeAnterior>
+                <galeriaFotografica>mirador.jpg</galeriaFotografica>
+            </hito>
+            <hito>
+                <nombreHito>Llegar a la cima</nombreHito>
+                <descripcionHito>llegar a la cima de la roca</descripcionHito>
+                <coordenadasHito>38.19327621589622, 128.47579029604157, 873</coordenadasHito>
+                <distanciaDesdeAnterior unidades="kilometros">1.5</distanciaDesdeAnterior>
+                <galeriaFotografica>rocaUlsanbawi.jpg</galeriaFotografica>
+            </hito>
+            <hito>
+                <nombreHito>Heundeul Bawi Rock</nombreHito>
+                <descripcionHito>Templo de la zona</descripcionHito>
+                <coordenadasHito>38.19022825860469, 128.4750284241587, 620</coordenadasHito>
+                <distanciaDesdeAnterior unidades="kilometros">3</distanciaDesdeAnterior>
+                <galeriaFotografica>templo.jpg</galeriaFotografica>
+            </hito>
+        </hitos>
+    </ruta>
+
+    <ruta>
+        <nombre>Visita turística por la ciudad de Seúl</nombre>
+        <tipo>Arquitectura y monumentos</tipo>
+        <medioTransporte>A pie</medioTransporte>
+        <duracion>8 horas</duracion>
+        <agencia>Tripadvisor</agencia>
+        <descripcion>Este recorrido turístico de día completo por Seúl muestra lo mejor de la historia, cultura y tradiciones de Corea. Dirigido por un guía, vea los principales lugares de interés de la ciudad, incluidos el Templo Jogyesa y el Palacio Gyeongbokgung, el Museo Nacional Folclórico, la Torre N de Seúl y la aldea Namsangol Hanok. Observe el cambio de guardia durante una parada en la puerta de Gwanghwamun y disfrute de un almuerzo tradicional coreano con sus compañeros de viaje en Insadong. Su recorrido de día completo también incluye una parada en un centro tradicional de ginseng</descripcion>
+        <personasAdecuadas>Se puede ir con niños</personasAdecuadas>
+        <lugarInicio>Templo budista de Jogyesa</lugarInicio>
+        <direccionInicio>55 Ujeongguk-ro, Jongno-gu, Seoul, Corea del Sur</direccionInicio>
+        <coordenadas>37.574057958392814, 126.98212689502529, 30</coordenadas>
+        <referencias>https://www.tripadvisor.es/AttractionProductReview-g294197-d11454649-Seoul_City_Sightseeing_Tour_Including_Gyeongbokgung_Palace_N_Seoul_Tower_and_Namsa.html</referencias>
+        <referencias>https://es.wikipedia.org/wiki/Gyeongbokgung</referencias>
+        <referencias>http://www.jogyesa.kr/</referencias>
+        <recomendacion>9</recomendacion>
+        <hitos>
+            <hito>
+                <nombreHito>Palacio de Gyeongbokgung</nombreHito>
+                <descripcionHito>Llegar al palacio de Gyeongbokgung</descripcionHito>
+                <coordenadasHito>37.57974188443505, 126.97707401730926, 30</coordenadasHito>
+                <distanciaDesdeAnterior unidades="kilometros">0</distanciaDesdeAnterior>
+                <galeriaFotografica>PalacioGyeongbokgung.jpg</galeriaFotografica>
+            </hito>
+            <hito>
+                <nombreHito>Torre de Seúl</nombreHito>
+                <descripcionHito>Llegar a la torre de Seul</descripcionHito>
+                <coordenadasHito>37.551115276493505, 126.98831461315224, 236</coordenadasHito>
+                <distanciaDesdeAnterior unidades="kilometros">3</distanciaDesdeAnterior>
+                <galeriaFotografica>torreSeul.jpg</galeriaFotografica>
+            </hito>
+            <hito>
+                <nombreHito>Namsangol Hanok Village</nombreHito>
+                <descripcionHito>Llegar al Namsangol Hanok Village</descripcionHito>
+                <coordenadasHito>37.559435031585195, 126.9946514507634,50</coordenadasHito>
+                <distanciaDesdeAnterior unidades="kilometros">2.6</distanciaDesdeAnterior>
+                <galeriaFotografica>NamsangolHanokVillage</galeriaFotografica>
+            </hito>
+        </hitos>
+    </ruta>
+
+    <ruta>
+        <nombre>Tour de Busan</nombre>
+        <tipo>Mixta Arquitectura y paisajística</tipo>
+        <medioTransporte>A pie</medioTransporte>
+        <duracion>9 horas</duracion>
+        <agencia>Sin agencia</agencia>
+        <descripcion>Recorrido turístico por la ciudad de Busan que incluye visitas a atracciones destacadas como el mercado de pescado de Jagalchi, el templo Haedong Yonggungsa y la aldea cultural de Gamcheon</descripcion>
+        <personasAdecuadas>Se puede ir con niños</personasAdecuadas>
+        <lugarInicio>Estación de tren de Busan </lugarInicio>
+        <direccionInicio>Jungang-daero, 초량제3동 Dong-gu, Busan, Corea del Sur</direccionInicio>
+        <coordenadas>35.11528089857337, 129.04223287409417</coordenadas>
+        <referencias>https://www.tripadvisor.es/AttractionProductReview-g297884-d23829444-Small_Group_Full_Day_Busan_Tour_Max_6_Pax-Busan.html</referencias>
+        <referencias>https://es.wikipedia.org/wiki/Busan</referencias>
+        <referencias>https://mochilerosdospuntocero.com/asia/corea/busan-que-ver-hacer/</referencias>
+        <recomendacion>7</recomendacion>
+        <hitos>
+            <hito>
+                <nombreHito>Haedong Yonggungsa</nombreHito>
+                <descripcionHito>Llegar al templo Haedong Yonggungsa</descripcionHito>
+                <coordenadasHito>35.18852797213116, 129.22326379336775</coordenadasHito>
+                <distanciaDesdeAnterior unidades="kilometros">0</distanciaDesdeAnterior>
+                <galeriaFotografica>haedongYonggungsa.jpg</galeriaFotografica>
+            </hito>
+            <hito>
+                <nombreHito>Aldea cultural de Gamcheon</nombreHito>
+                <descripcionHito>Pasear por las calles de Gamcheon</descripcionHito>
+                <coordenadasHito>35.097540645101844, 129.0106382824123</coordenadasHito>
+                <distanciaDesdeAnterior unidades="kilometros">21.8</distanciaDesdeAnterior>
+                <galeriaFotografica>gamcheon.jpg</galeriaFotografica>
+            </hito>
+            <hito>
+                <nombreHito>Songdo Skywalk</nombreHito>
+                <descripcionHito>Pasear por el puente de Songdo Skywalk</descripcionHito>
+                <coordenadasHito>35.07606556209776, 129.02158270271772</coordenadasHito>
+                <distanciaDesdeAnterior unidades="kilometros">4</distanciaDesdeAnterior>
+                <galeriaFotografica>songdoSkywalk.jpg</galeriaFotografica>
+            </hito>
+        </hitos>
+    </ruta>
+</rutas>
