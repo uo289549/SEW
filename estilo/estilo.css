@@ -99,3 +99,9 @@ td{
 tr:nth-child(odd){
     background-color: #99D8FF;
 }
+
+img, video{
+    height: 100%;
+    width: auto;
+}
+
