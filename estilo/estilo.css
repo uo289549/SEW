@@ -1,4 +1,4 @@
-/*datos personales Yago Fernandez Lopez UO289549*/
+/* Yago Fernandez Lopez UO289549*/
 
 /*Especificidad: 001*/
 body {
@@ -39,4 +39,63 @@ a:visited{
 /*Especificidad: 011*/
 a:active, a:hover, a:focus{
     color: #00FF00;
+}
+
+/*Especificidad: 001*/
+ul, ol {
+    font-size: 0.9em;
+    font-family: 'Times New Roman', serif;
+    list-style-type : square;
+}
+
+/*Especificidad: 012*/
+ul li:nth-child(3){
+    font-weight:bold;
+}
+
+/*Especificidad: 001*/
+dt{
+    font-size: 1.1em;
+    font-family: Arial, sans-serif;
+    margin-bottom: 0.3em;
+}
+
+/*Especificidad: 001*/
+dd{
+    font-size: 0.9em;
+    font-family: Arial, sans-serif;
+    margin-bottom: 1.3em;
+}
+
+/*Especificidad: 001*/
+table{
+    border-collapse: collapse;
+    border: 0.2em inset #FF0000;
+}
+
+/*Especificidad: 001*/
+caption{
+    font-weight:bold;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.6em;
+}
+
+/*Especificidad: 001*/
+th{
+    border-collapse: collapse;
+    border: 0.1em inset #FF0000;
+    padding: 0.4em;
+    background-color: #0094F0;
+}
+
+/*Especificidad: 001*/
+td{
+    text-align: center;
+    border-collapse: collapse;
+    border: 0.1em inset #FF0000;
+}
+
+/*Especificidad: 012*/
+tr:nth-child(odd){
+    background-color: #99D8FF;
 }
