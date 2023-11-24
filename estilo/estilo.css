@@ -112,7 +112,13 @@ img, video{
 
 /*Estilo para moviles*/
 @media screen and (max-width: 465px) {
-    .element {
-      /* Apply some styles */
+    /*Especificidad: 001*/
+    header{
+        flex-direction: column;
+    }
+
+    /*Especificidad: 001*/
+    nav{
+        flex-wrap: wrap;
     }
   }
