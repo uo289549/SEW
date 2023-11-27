@@ -39,7 +39,9 @@ class Memoria {
     unflipCards() {
         this.lockBoard = true;
         setTimeout(null,3000);
-        //voltearCartas
+        
+        this.firstCard.dataset.state = "initial";
+        this.secondCard.dataset.state = "initial";
 
         this.resetBoard();
     }
@@ -56,7 +58,8 @@ class Memoria {
     }
 
     disableCards() {
-        //modificar atributo a revealed
+        this.firstCard.dataset.state = "revealed";
+        this.secondCard.dataset.state = "revealed";
         this.resetBoard();
     }
 
@@ -68,8 +71,9 @@ class Memoria {
 
             const articleNode = document.createElement('article');
             articleNode.setAttribute('data-element',cardData.element);
+            articleNode.setAttribute('data-state',"initial");
 
-            const h2Node = document.createElement('h2');
+            const h2Node = document.createElement('h3');
             h2Node.textContent = 'Tarjeta de memoria';
 
             const imgNode = document.createElement('img');
@@ -89,6 +93,19 @@ class Memoria {
     }
 
     flipCard(memoria){
+        if(this.dataset.state === "revealed" || memoria.lockBoard === true || this === memoria.firstCard){
+            return;
+        }
+
+        this.dataset.state = "flip";
+        if(memoria.hasFlippedCard === false){
+            memoria.hasFlippedCard = true;
+            memoria.firstCard = this;
+        }else{
+            memoria.secondCard = this;
+            memoria.checkForMatch();
+        }
+
         alert("onclick Event detected!");
     }
 }
