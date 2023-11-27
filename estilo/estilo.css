@@ -7,6 +7,7 @@ body {
     color: #000000;
 }
 
+/*Especificidad: 001*/
 header{
     background-color: #005B94;
     color: #FFF;
@@ -14,6 +15,7 @@ header{
 
 }
 
+/*Especificidad: 001*/
 nav{
     font-size: 1.5em;
 }

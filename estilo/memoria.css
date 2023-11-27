@@ -17,7 +17,26 @@ section h2 {
     margin-bottom: 10px;
 }
 
-section article {
+/*Especificidad: 002*/
+article {
     width: 20%; 
     margin-bottom: 10px;
+    border: 0.2em inset #FF0000;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    border-radius: 5px;
+    background-color: #005B94;
+    color: #FFF;
+}
+
+article img{
+    transform: rotateY(180deg);
+}
+
+article img, h3{
+    backface-visibility: hidden;
+}
+
+article.flip {
+    transform: rotateY(180deg);
 }
