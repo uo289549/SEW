@@ -1,0 +1,23 @@
+/*Especificidad: 011*/
+section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5%;
+    max-width: 60%;
+    margin: auto;
+}
+
+/*Especificidad: 012*/
+section h2 {
+    text-align: center;
+    width: 100%;
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+section article {
+    width: 20%; 
+    margin-bottom: 10px;
+}

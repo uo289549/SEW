@@ -21,13 +21,17 @@ class Memoria {
         this.lockBoard = false;
         this.firstCard = null;
         this.secondCard = null;
+
+        this.shuffleElements();
+        this.createElements();
+        this.addEventListeners();
     }
 
     shuffleElements() {
-        n = this.elements.length;
+        const n = this.elements.length;
 
         for (let i = n - 1; i > 0; i--) {
-            j = Math.random() * (i + 1);
+            const j = Math.floor(Math.random() * (i + 1))+1;
             [this.elements[i], this.elements[j]] = [this.elements[j], this.elements[i]];
         }
     }
@@ -54,5 +58,37 @@ class Memoria {
     disableCards() {
         //modificar atributo a revealed
         this.resetBoard();
+    }
+
+    createElements(){
+        const container = document.querySelector('section');
+
+        for(const tarjeta in this.elements){
+            const cardData = this.elements[tarjeta];
+
+            const articleNode = document.createElement('article');
+            articleNode.setAttribute('data-element',cardData.element);
+
+            const h2Node = document.createElement('h2');
+            h2Node.textContent = 'Tarjeta de memoria';
+
+            const imgNode = document.createElement('img');
+            imgNode.setAttribute('src', cardData.source);
+            imgNode.setAttribute('alt', cardData.element);
+
+            articleNode.appendChild(h2Node);
+            articleNode.appendChild(imgNode);
+
+            container.appendChild(articleNode);
+        }
+    }
+
+    addEventListeners(){
+        const cards = document.querySelectorAll('section article');
+        cards.forEach(card => card.addEventListener('click', this.flipCard.bind(card, this)));
+    }
+
+    flipCard(memoria){
+        alert("onclick Event detected!");
     }
 }
