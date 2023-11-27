@@ -38,12 +38,12 @@ class Memoria {
 
     unflipCards() {
         this.lockBoard = true;
-        setTimeout(null,3000);
         
-        this.firstCard.dataset.state = "initial";
-        this.secondCard.dataset.state = "initial";
-
-        this.resetBoard();
+        setTimeout(() => {
+            this.firstCard.dataset.state = "initial";
+            this.secondCard.dataset.state = "initial";
+            this.resetBoard();
+        },1000);
     }
 
     resetBoard() {
@@ -54,7 +54,7 @@ class Memoria {
     }
 
     checkForMatch() {
-        this.firstCard === this.secondCard ? this.disableCards() : this.unflipCards();
+        this.firstCard.dataset.element === this.secondCard.dataset.element ? this.disableCards() : this.unflipCards();
     }
 
     disableCards() {
@@ -105,7 +105,5 @@ class Memoria {
             memoria.secondCard = this;
             memoria.checkForMatch();
         }
-
-        alert("onclick Event detected!");
     }
 }
