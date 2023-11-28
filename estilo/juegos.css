@@ -1,0 +1,9 @@
+/*Especificidad: 001*/
+h2{
+    text-align: center;
+}
+
+/*Especificidad: 001*/
+nav{
+    justify-content: center;
+}
