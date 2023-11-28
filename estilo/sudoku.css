@@ -1,0 +1,56 @@
+/*Especificidad: 001*/
+h2{
+    text-align: center;
+}
+
+/*Especificidad: 001*/
+nav{
+    justify-content: center;
+}
+
+
+/*Especificidad: 001*/
+main {
+
+    width: 20%;
+    aspect-ratio: 1;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0;
+    border: 3px solid #000;
+}
+
+/*Especificidad: 001*/
+p {
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+/*Especificidad: 011*/
+p:nth-child(3n){
+    border-right: 3px solid #000;
+}
+
+/*Especificidad: 011*/
+p:nth-child(n+19){
+    border-bottom: 3px solid #000;
+}
+
+/*Especificidad: 011*/
+p:nth-child(n+28) {
+    border-bottom: 1px solid #000;
+}
+
+/*Especificidad: 011*/
+p:nth-child(n+46){
+    border-bottom: 3px solid #000;
+}
+
+/*Especificidad: 011*/
+p:nth-child(n+55){
+    border-bottom: 1px solid #000;
+}

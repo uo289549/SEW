@@ -11,14 +11,15 @@
     <title>EscritorioVirtual</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/sudoku.css" />
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
+    <script src="js/sudoku.js"></script>
 </head>
 
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
     <header>
         <h1>Escritorio Virtual</h1>
-            <p>En desarrollo</p>
             <nav>
                 <a title="EscritorioVirtual" accesskey="I" tabindex="1" href= "index.html">Inicio</a>
                 <a title="Sobremi" accesskey="S" tabindex="2" href= "sobremi.html">Sobremi</a>
@@ -36,11 +37,13 @@
         <a title="Sudoku" accesskey="U" tabindex="9" href= "sudoku.html">Sudoku</a>
     </nav>
 
-    <section>
-        <h2>Juego de Memoria</h2>
-    </section>
+    <h2>Sudoku</h2>
+    <main>
+    </main>
 
     <script>
+        var sudoku = new Sudoku("facil");
+        sudoku.paintSudoku();
     </script>
 </body>
 </html>
