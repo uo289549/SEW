@@ -11,7 +11,9 @@
     <title>EscritorioVirtual</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/meteorologia.css" />
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/pais.js"></script>
 </head>
 
@@ -29,6 +31,7 @@
                 <a title="Juegos" accesskey="J" tabindex="7" href= "juegos.html">Juegos</a>
             </nav>
     </header>
+
     <script >
         var coreaSur = new Pais("Corea del Sur", "Seúl",51.74);
         coreaSur.completarPais("República constitucional", "37°34′N 126°59′E","Cristianismo(29,4%)");
@@ -37,6 +40,7 @@
         document.write("<p>"+coreaSur.getPoblacion()+"</p>");
         document.write(coreaSur.getInfoSecundaria());
         coreaSur.escribirCoordenadas();
+        coreaSur.getPrevisionMeteorologica();
     </script>
 </body>
 </html>

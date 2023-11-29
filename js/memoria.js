@@ -73,14 +73,14 @@ class Memoria {
             articleNode.setAttribute('data-element',cardData.element);
             articleNode.setAttribute('data-state',"initial");
 
-            const h2Node = document.createElement('h3');
-            h2Node.textContent = 'Tarjeta de memoria';
+            const h3Node = document.createElement('h3');
+            h3Node.textContent = 'Tarjeta de memoria';
 
             const imgNode = document.createElement('img');
             imgNode.setAttribute('src', cardData.source);
             imgNode.setAttribute('alt', cardData.element);
 
-            articleNode.appendChild(h2Node);
+            articleNode.appendChild(h3Node);
             articleNode.appendChild(imgNode);
 
             container.appendChild(articleNode);
