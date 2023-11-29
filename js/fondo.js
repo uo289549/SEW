@@ -13,9 +13,10 @@ class Fondo{
             tagmode: "any",
             format: "json"
         }).done(function(data){
-            indiceFoto = Math.floor(Math.random() * 20)+1;
-            var foto = data.items[indiceFoto];
-            $('body').css('background-image',foto).css('background-size', 'cover');
+            let indiceFoto = Math.floor(Math.random() * 20)+1;
+            let foto = data.items[indiceFoto];
+            let fotoURL = foto.media.m;
+            $('body').css('background-image','url('+fotoURL+')').css('background-size', 'cover');
         }
         );
     }
