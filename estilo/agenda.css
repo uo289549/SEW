@@ -1,0 +1,45 @@
+/*Especificidad: 001*/
+section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+
+/*Especificidad: 002*/
+section h2{
+    text-align: center;
+    width: 100%;
+    flex-grow: 1;
+    margin-bottom: 0.5em;
+    font-size: 2.5em;
+}
+
+/*Especificidad: 001*/
+article {
+
+    width: 15%; 
+    height: auto;
+    margin: 0.5em;
+
+    border: 0.3em inset #000;
+    border-radius: 0.3em;
+
+    background-color: #63FCE8;
+    color: #000;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+p:nth-child(1){
+    font-size: 2em;
+    font-weight: bold;
+}
