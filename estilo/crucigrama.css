@@ -7,3 +7,35 @@ h2{
 nav{
     justify-content: center;
 }
+
+/*Especificidad: 001*/
+main {
+
+    width: 40%;
+    aspect-ratio: 1.5;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0;
+    border: 3px solid #000;
+}
+
+/*Especificidad: 001*/
+p {
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+    border: 1px solid #000;
+    font-size: 1.5em;
+    background-color: #A8C1E1;
+    /* #6395CA */
+}
+
+p[data-state = 'empty'] {
+    background-color: #000;
+}
+
+p[data-state = 'clicked'] {
+    border: 2px solid #FFFF00;
+}

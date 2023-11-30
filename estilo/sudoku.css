@@ -54,3 +54,7 @@ p:nth-child(n+46){
 p:nth-child(n+55){
     border-bottom: 1px solid #000;
 }
+
+p[data-state = 'clicked'] {
+    border: 2px solid #FFFF00;
+}

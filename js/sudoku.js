@@ -79,7 +79,6 @@ class Sudoku {
 
     paintSudoku(){
         this.createStructure();
-        
     }
 
     clickarCasilla(sudoku){
