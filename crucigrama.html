@@ -11,9 +11,9 @@
     <title>EscritorioVirtual</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/sudoku.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/crucigrama.css" />
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
-    <script src="js/sudoku.js"></script>
+    <script src="js/crucigrama.js"></script>
 </head>
 
 <body>
@@ -38,13 +38,13 @@
         <a title="Crucigrama" accesskey="C" tabindex="10" href= "crucigrama.html">Crucigrama</a>
     </nav>
 
-    <h2>Sudoku</h2>
-    <main>
-    </main>
-
+    <section>
+        <h2>Crucigrama</h2>
+    </section>
+    
     <script>
-        var sudoku = new Sudoku("facil");
-        sudoku.paintSudoku();
+        var crucigrama = new Crucigrama("facil");
+        crucigrama.start();
     </script>
 </body>
 </html>
