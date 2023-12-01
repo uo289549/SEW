@@ -32,10 +32,12 @@ p {
     /* #6395CA */
 }
 
+/*Especificidad: 011*/
 p[data-state = 'empty'] {
     background-color: #000;
 }
 
+/*Especificidad: 011*/
 p[data-state = 'clicked'] {
     border: 2px solid #FFFF00;
 }

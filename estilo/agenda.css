@@ -39,6 +39,7 @@ article {
     text-align: center;
 }
 
+/*Especificidad: 011*/
 p:nth-child(1){
     font-size: 2em;
     font-weight: bold;

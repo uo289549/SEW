@@ -1,0 +1,41 @@
+h2{
+    font-size: 2.5em;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+    justify-content: center;
+    margin: auto;
+}
+
+article{
+    border: 0.3em inset #000;
+    border-radius: 0.3em;
+
+    background-color: #63FCE8;
+    color: #000;
+    position: relative;
+
+    margin: 0.5em;
+}
+
+h3{
+    font-weight: bold;
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+}
+
+p{
+    margin: 1em;
+}

@@ -11,14 +11,15 @@
     <title>EscritorioVirtual</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/noticias.css" />
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
+    <script src="js/noticias.js"></script>
 </head>
 
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
     <header>
-        <h1>Escritorio Virtual</h1>
-            <p>En desarrollo</p>
+        <h1>Escritorio Virtual</h1> 
             <nav>
                 <a title="EscritorioVirtual" accesskey="I" tabindex="1" href= "index.html">Inicio</a>
                 <a title="Sobremi" accesskey="S" tabindex="2" href= "sobremi.html">Sobre mi</a>
@@ -29,5 +30,23 @@
                 <a title="Juegos" accesskey="J" tabindex="7" href= "juegos.html">Juegos</a>
             </nav>
     </header>
+
+    <input type="file" onchange="noticias.readInputFile(this.files)">
+
+    <main>
+        <h2>Noticias</h2>
+    </main>
+
+    <section>
+        <input type="text" placeholder="Introduce titulo de la noticia">
+        <input type="text" placeholder="Introduce subtitulo de la noticia">
+        <input type="text" placeholder="Introduce contenido de la noticia">
+        <input type="text" placeholder="Introduce autor de la noticia">
+        <button>Crear noticia</button>
+    </section>
+
+    <script>
+        var noticias = new Noticias();
+    </script>
 </body>
 </html>
