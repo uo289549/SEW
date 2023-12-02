@@ -1,0 +1,49 @@
+section{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 40%;
+    height: 40%;
+}
+
+article{
+    width: 50em;
+    height: 50em;
+}
+
+section+section{
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+}
+
+section+section article{
+    border: 0.3em inset #000;
+    border-radius: 0.3em;
+
+    background-color: #63FCE8;
+    color: #000;
+    position: relative;
+
+    margin: 0.5em;
+}
+
+section+section article p{
+    margin: 1em;
+}
+
+/*Especificidad: 011*/
+section+section article a:link {
+    color: #005B94;
+}
+
+/*Especificidad: 011*/
+section+section article a:visited{
+    color: #ffff00;
+}
+
+/*Especificidad: 011*/
+section+section article a:active,section+section article a:hover,section+section article a:focus{
+    color: #9b0000;
+}

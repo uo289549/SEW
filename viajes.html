@@ -12,7 +12,10 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
     <link rel="stylesheet" type="text/css" href="estilo/viajes.css" />
+    <link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css">
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/viajes.js"></script>
 </head>
 
@@ -30,6 +33,16 @@
                 <a title="Juegos" accesskey="J" tabindex="7" href= "juegos.html">Juegos</a>
             </nav>
     </header>
+
+    <button>Crear mapa estatico</button>
+    <button>Crear mapa dinamico</button>
+
+    <section>
+    </section>
+
+    <section>
+        <input type="file" onchange="viajes.readInputFile(this.files)">
+    </section>
 
     <script>
         var viajes = new Viajes();
