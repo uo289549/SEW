@@ -13,7 +13,7 @@ class Fondo{
             tagmode: "any",
             format: "json"
         }).done(function(data){
-            let indiceFoto = Math.floor(Math.random() * 20)+1;
+            let indiceFoto = Math.floor(Math.random() * 19)+1;
             let foto = data.items[indiceFoto];
             let fotoURL = foto.media.m;
             $('body').css('background-image','url('+fotoURL.replace('_m','_b')+')').css('background-size', 'cover');
