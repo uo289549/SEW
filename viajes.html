@@ -16,6 +16,7 @@
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@mapbox/togeojson"></script>
     <script src="js/viajes.js"></script>
 </head>
 
@@ -34,14 +35,27 @@
             </nav>
     </header>
 
-    <button>Crear mapa estatico</button>
-    <button>Crear mapa dinamico</button>
+    
 
     <section>
+        <h2>Mapas</h2>
+        <button>Crear mapa estatico</button>
+        <button>Crear mapa dinamico</button>
     </section>
 
     <section>
-        <input type="file" onchange="viajes.readInputFile(this.files)">
+        <label for="xml">Rutas:</label>
+        <input type="file" id="xml" onchange="viajes.readInputFile(this.files);">
+    </section>
+
+    <section>
+        <label for="kml">Planimetrias:</label>
+        <input type="file" name="kml" id="kml" onchange="viajes.readInputKML();" multiple>
+    </section>
+
+    <section>
+        <label for="svg">Altimetrias:</label>
+        <input type="file" name="svg" id="svg" onchange="viajes.readInputSVG();" multiple>
     </section>
 
     <script>

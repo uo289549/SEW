@@ -7,8 +7,12 @@ class Viajes{
         this.precision = null;
         this.altitud = null;
         this.precisionAltitud = null;
+
         this.mapaEstaticoCreado = false;
         this.contenidoXml = null;
+        this.mapaParaKML = null;
+        this.numRuta = 0;
+
         this.añadirEventoBotones();
     }
 
@@ -97,19 +101,17 @@ class Viajes{
 
     readInputFile(archivos){
         const archivo = archivos[0];
-        let textoArchivo = null;
         const viajes = this;
 
         const tipoTexto = /text.*/;
         if(archivo.type.match(tipoTexto)){
             const lector = new FileReader();
             lector.onload = function(){
-                textoArchivo = lector.result;
-                viajes.crearXml(textoArchivo);
+                viajes.crearXml(lector.result);
             };
             lector.readAsText(archivo);
         }else{
-            noticia.textContent = "Error : ¡¡¡ Archivo no válido !!!";
+            alert("Error : ¡¡¡ Archivo no válido !!!");
         }
     }
 
@@ -328,6 +330,114 @@ class Viajes{
         });
     
         return textoDuracion.trim();
+
+    }
+
+    readInputKML(){
+
+        const archivos = document.querySelector('input[name="kml"]').files;
+
+        for(var i=0; i<archivos.length; i++){
+            const archivo = archivos[i];
+            const viajes = this;
+
+            const tipoTexto = "";
+            if(archivo.type.match(tipoTexto)){
+                const lector = new FileReader();
+                lector.onload = function(){
+                    viajes.añadirRutaKML(lector.result);
+                };
+                lector.readAsText(archivo);
+            }else{
+                alert("Error : ¡¡¡ Archivo no válido !!!");
+            }
+        }
+    }
+
+    crearMapaParaKML(long, lat){
+        const sections = document.querySelectorAll("section");
+        const section = sections[2];
+
+        const article = document.createElement("article");
+        article.setAttribute("id", "mapaKML");
+        section.appendChild(article);
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoidW8yODk1NDkiLCJhIjoiY2xwbzNmeHQ0MDVtaDJpbDNoNDljM3R0ZSJ9.rx6By1f83P_Kg1HKG4aEjA';
+        const map = new mapboxgl.Map({
+            container: 'mapaKML', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            center: [long, lat], // starting position [lng, lat]
+            zoom: 9 // starting zoom
+        });
+
+        return map;
+    }
+
+    añadirRutaKML(kmlString,numRuta){
+        const kml = $.parseXML(kmlString);
+
+        if(this.mapaParaKML === null){
+            var coordenadas = $(kml).find('coordinates').text();
+
+            var coordenadasArray = coordenadas.split('\n');
+            var coordenadasPto1 = coordenadasArray[1].split(',');
+
+            const long = parseFloat(coordenadasPto1[0]);
+            const lat = parseFloat(coordenadasPto1[1]);
+
+            this.mapaParaKML = this.crearMapaParaKML(long, lat);
+        }
+
+        const mapa = this.mapaParaKML;
+
+        var data = toGeoJSON.kml(kml);
+
+        const sourceName = 'rutaKML'+(this.numRuta+1);
+        const idName = 'kmlLayer' + (this.numRuta+1);
+        this.numRuta++;
+
+
+        mapa.on('load', function() {
+            mapa.addSource(sourceName, {
+                type: 'geojson',
+                data: data
+            });
+        
+            mapa.addLayer({
+                id: idName,
+                type: 'line', // Tipo de capa (puede variar según el tipo de datos)
+                source: sourceName,
+                paint: {
+                    'line-color': '#FF0000', // Color de linea
+                    'line-width': 1 // Ancho de linea
+                }
+            });
+        });
+
+    }
+
+    readInputSVG(){
+
+        const archivos = document.querySelector('input[name="svg"]').files;
+
+        for(var i=0; i<archivos.length; i++){
+            const archivo = archivos[i];
+            const viajes = this;
+
+            const tipoTexto = "";
+            if(archivo.type.match(tipoTexto)){
+                const lector = new FileReader();
+                lector.onload = function(){
+                    viajes.añadirSVG(lector.result);
+                };
+                lector.readAsText(archivo);
+            }else{
+                alert("Error : ¡¡¡ Archivo no válido !!!");
+            }
+        }
+    }
+
+    añadirSVG(){
 
     }
 }

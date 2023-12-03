@@ -112,9 +112,15 @@ class Crucigrama{
                 casilla = parrafo;
             }
         }
-
-        const key = event.key;
         const valoresValidos = "+-/*123456789";
+
+        let key = null;
+        if(valoresValidos.includes(event)){
+            key = event;
+        }else{
+            key = event.key;
+        }
+
         if(casilla != null && valoresValidos.includes(key)){
             this.introduceElement(casilla, key);
         }else if(casilla === null){

@@ -8,10 +8,22 @@ section{
     height: 40%;
 }
 
+button{
+    width: fit-content;
+}
+
 /*Especificidad: 001*/
 article{
     width: 50em;
     height: 50em;
+
+    border: 0.3em inset #000;
+    border-radius: 0.3em;
+}
+
+img{
+    border: 0.2em inset #000;
+    border-radius: 0.3em;
 }
 
 /*Especificidad: 002*/
@@ -72,4 +84,19 @@ section+section article a:visited{
 section+section article a:active, section+section article a:hover, section+section article a:focus{
     color: #B729FC;
     
+}
+
+section+section+section{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 40%;
+    height: 40%;
+}
+
+/*Especificidad: 001*/
+section+section+section article{
+    width: 50em;
+    height: 50em;
 }
