@@ -116,6 +116,7 @@ class Viajes{
     crearXml(xmlString){
 
         const xml = $.parseXML(xmlString);
+        const viajes = this;
 
         $(xml).find('ruta').each(function() {
             const sections = document.querySelectorAll("section");
@@ -157,7 +158,7 @@ class Viajes{
 
             var duracion = $(this).find('duracion').text();
             p = document.createElement('p');
-            p.textContent = "Duracion: "+duracion;
+            p.textContent = viajes.convertirDurationXMLATexto(duracion);
             article.appendChild(p);
 
             var agencia = $(this).find('agencia').text();
@@ -222,54 +223,111 @@ class Viajes{
             p.textContent = "Recomendacion: "+recomendacion;
             article.appendChild(p);
 
-            $(this).find('hito').each(function() {
+            $(this).find('hitos').each(function() {
+
+                p = document.createElement('p');
+                p.textContent = "Hitos: ";
+                article.appendChild(p);
+
+                var articleHito = document.createElement("article");
+                article.appendChild(articleHito);
+
+                $(this).find('hito').each(function() {
                 
-                var nombreHito = $(this).find('nombreHito').text();
-                p = document.createElement('p');
-                p.textContent = "Nombre del hito: "+nombreHito;
-                article.appendChild(p);
-
-                var descripcionHito = $(this).find('descripcionHito').text();
-                p = document.createElement('p');
-                p.textContent = "Descripcion: "+descripcionHito;
-                article.appendChild(p);
-
-                $(this).find('coordenadasHito').each(function() {
+                    var nombreHito = $(this).find('nombreHito').text();
+                    p = document.createElement('p');
+                    p.textContent = "Nombre del hito: "+nombreHito;
+                    articleHito.appendChild(p);
+    
+                    var descripcionHito = $(this).find('descripcionHito').text();
+                    p = document.createElement('p');
+                    p.textContent = "Descripcion: "+descripcionHito;
+                    articleHito.appendChild(p);
+    
+                    $(this).find('coordenadasHito').each(function() {
+            
+                        var longitud = $(this).find('longitud').text();
         
-                    var longitud = $(this).find('longitud').text();
+                        var latitud = $(this).find('latitud').text();   
+        
+                        var altitud = $(this).find('altitud').text();
     
-                    var latitud = $(this).find('latitud').text();   
+                        p = document.createElement('p');
+                        p.textContent = "Coordenadas del hito: "+longitud+","+latitud+","+altitud;
+                        articleHito.appendChild(p);
+                    });
     
-                    var altitud = $(this).find('altitud').text();
+                    var distanciaDesdeAnterior = $(this).find('distanciaDesdeAnterior').text();
+                    p = document.createElement('p');
+                    p.textContent = "Distancia desde el anterior: "+distanciaDesdeAnterior +" "+ $(this).find('distanciaDesdeAnterior').attr('unidades');
+                    articleHito.appendChild(p);
 
                     p = document.createElement('p');
-                    p.textContent = "Coordenadas del hito: "+longitud+","+latitud+","+altitud;
-                    article.appendChild(p);
-                });
-
-                var distanciaDesdeAnterior = $(this).find('distanciaDesdeAnterior').text();
-                p = document.createElement('p');
-                p.textContent = "Distancia desde el anterior: "+distanciaDesdeAnterior + $(this).find('distanciaDesdeAnterior').attr('unidades');
-                article.appendChild(p);
-
-                $(this).find('galeriaFotografica').each(function() {
-                 
-                    var galeriaFotografica = $(this).text();
-                    var img = document.createElement('img');
-                    img.setAttribute("src", galeriaFotografica);
-                    img.setAttribute("alt", galeriaFotografica.split(".")[0]);
-                    article.appendChild(img);
-                });
+                    p.textContent = "Galeria de fotografías: ";
+                    articleHito.appendChild(p);
     
+                    $(this).find('galeriaFotografica').each(function() {
+                     
+                        var galeriaFotografica = $(this).text();
+                        var img = document.createElement('img');
+                        img.setAttribute("src","xml/"+galeriaFotografica);
+                        img.setAttribute("alt", galeriaFotografica.split(".")[0]);
+                        articleHito.appendChild(img);
+                    });
 
-                $(this).find('galeriaVideos').each(function() {
-                   
-                    var galeriaVideos = $(this).text();
-                    p = document.createElement('p');
-                    p.textContent = "Videos: "+galeriaVideos;
-                    article.appendChild(p);
-                });;
+                    var tituloCreado = false;
+                    $(this).find('galeriaVideos').each(function() {
+                        if(tituloCreado === false){
+                            p = document.createElement('p');
+                            p.textContent = "Galeria de videos: ";
+                            articleHito.appendChild(p);
+                            tituloCreado = true;
+                        }
+                       
+                        var galeriaVideos = $(this).text();
+                        var video = document.createElement('video');
+                        video.setAttribute("controls","auto");
+
+                        var source = document.createElement('source');
+                        source.setAttribute("src","xml/"+galeriaVideos);
+                        source.setAttribute("type", "video/mp4");
+                        video.appendChild(source);
+                        articleHito.appendChild(video);
+                    });;
+                });
             });
         });
+    }
+
+    convertirDurationXMLATexto(duracionXML){
+        var duracion = duracionXML.substring(1); // Eliminar el carácter 'P'
+
+        var textoDuracion = 'Duración: ';
+        var partes = duracion.match(/[0-9]+[YMWDTHS]/g);
+
+        partes.forEach(function (parte) {
+            var valor = parseInt(parte.match(/[0-9]+/)[0]);
+            var unidad = parte.match(/[YMWDTHS]/)[0];
+    
+            switch (unidad) {
+                case 'D':
+                    textoDuracion += valor + ' días ';
+                    break;
+                case 'H':
+                    textoDuracion += valor + ' horas ';
+                    break;
+                case 'M':
+                    textoDuracion += valor + ' minutos ';
+                    break;
+                case 'S':
+                    textoDuracion += valor + ' segundos ';
+                    break;
+                default:
+                    break;
+            }
+        });
+    
+        return textoDuracion.trim();
+
     }
 }
