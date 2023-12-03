@@ -11,9 +11,11 @@
     <title>EscritorioVirtual</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/memoria.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/juegos.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/reproductor.css" />
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
-    <script src="js/memoria.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/reproductor.js"></script>
 </head>
 
 <body>
@@ -30,21 +32,33 @@
                 <a title="Juegos" accesskey="J" tabindex="7" href= "juegos.html">Juegos</a>
             </nav>
     </header>
-
-    <h2>Menú Juegos</h2>
-    <nav>
-        <a title="Memoria" accesskey="E" tabindex="8" href= "memoria.html">Memoria</a>
-        <a title="Sudoku" accesskey="U" tabindex="9" href= "sudoku.html">Sudoku</a>
-        <a title="Crucigrama" accesskey="C" tabindex="10" href= "crucigrama.html">Crucigrama</a>
-        <a title="Reproductor" accesskey="R" tabindex="11" href= "reproductorMusica.html">Reproductor musica</a>
-    </nav>
-
-    <section>
-        <h2>Juego de Memoria</h2>
-    </section>
     
+    <section>
+        <h2>Menú Juegos</h2>
+        <nav>
+            <a title="Memoria" accesskey="E" tabindex="8" href= "memoria.html">Memoria</a>
+            <a title="Sudoku" accesskey="U" tabindex="9" href= "sudoku.html">Sudoku</a>
+            <a title="Crucigrama" accesskey="C" tabindex="10" href= "crucigrama.html">Crucigrama</a>
+            <a title="Reproductor" accesskey="R" tabindex="11" href= "reproductorMusica.html">Reproductor musica</a>
+        </nav>
+    </section>
+
+    <label for="musica">Añadir musica:</label>
+    <input type="file" id="musica" onchange="reproductor.cargarMusica();" multiple>
+
+    <main>
+        <section>
+            <h2>Lista de musica</h2>
+        </section>
+
+        <section>
+            <h2>Reproduciendo</h2>
+        </section>
+    </main>
+
     <script>
-        var memoria = new Memoria();
+        var reproductor = new Reproductor();
     </script>
+
 </body>
 </html>

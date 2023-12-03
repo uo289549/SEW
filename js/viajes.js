@@ -437,7 +437,20 @@ class Viajes{
         }
     }
 
-    añadirSVG(){
+    añadirSVG(svgString){
+        const sections = document.querySelectorAll('section');
+        const section = sections[3];
 
+        const svgParseado = $.parseXML(svgString);
+
+        const xmlns = $(svgParseado).find('svg').attr('xmlns');
+        const version = $(svgParseado).find('svg').attr('version');
+
+        var svgElement = document.createElementNS(xmlns, "svg");
+        svgElement.setAttribute("xmlns", xmlns);
+        svgElement.setAttribute("version", version);
+        svgElement.innerHTML = svgString;
+
+        section.appendChild(svgElement);
     }
 }

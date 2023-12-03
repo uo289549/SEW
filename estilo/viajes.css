@@ -26,6 +26,14 @@ img{
     border-radius: 0.3em;
 }
 
+svg{
+    width: 50em;
+    height: 50em;
+    
+    border: 0.2em inset #000;
+    border-radius: 0.3em;
+}
+
 /*Especificidad: 002*/
 section+section{
     display: flex;
