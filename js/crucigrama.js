@@ -267,57 +267,66 @@ class Crucigrama{
             formulario.attr('name', 'crucigrama');
     
             //Campo nombre
-            var parrafo = $('<p>');
-            parrafo.text("Nombre:");
+            var label = $('<label>');
+            label.text("Nombre:");
+            label.attr('for','nombre');
     
             var input = $('<input>');
             input.attr('type','text');
+            input.attr('id','nombre');
             input.attr('name','nombre');
             input.attr('value','');
     
-            parrafo.append(input);
-            formulario.append(parrafo);
+            formulario.append(label);
+            formulario.append(input);
             
             //Campo apellidos
-            parrafo = $('<p>');
-            parrafo.text("Apellidos:");
+            label = $('<label>');
+            label.text("Apellidos:");
+            label.attr('for','apellidos');
     
             input = $('<input>');
             input.attr('type','text');
+            input.attr('id','apellidos');
             input.attr('name','apellidos');
             input.attr('value','');
     
-            parrafo.append(input);
-            formulario.append(parrafo);
+            formulario.append(label);
+            formulario.append(input);
     
             //Campo nivel
-            parrafo = $('<p>');
-            parrafo.text("Nivel:");
+            label = $('<label>');
+            label.text("Nivel:");
+            label.attr('for','nivel');
     
             input = $('<input>');
             input.attr('type','text');
+            input.attr('id','nivel');
             input.attr('name','nivel');
             input.attr('value',nivel);
             input.attr('readonly','');
     
-            parrafo.append(input);
-            formulario.append(parrafo);
+            formulario.append(label);
+            formulario.append(input);
     
             //Campo tiempo
-            parrafo = $('<p>');
-            parrafo.text("Tiempo:");
+            label = $('<label>');
+            label.text("Tiempo:");
+            label.attr('for','tiempo');
     
             input = $('<input>');
             input.attr('type','text');
+            input.attr('id','tiempo');
             input.attr('name','tiempo');
             input.attr('value',diferencia);
             input.attr('readonly','');
     
-            parrafo.append(input);
-            formulario.append(parrafo);
+            formulario.append(label);
+            formulario.append(input);
     
             input = $('<input>');
             input.attr('type','submit');
+            input.attr('id','Enviar');
             input.attr('value','Enviar');
             formulario.append(input);
     

@@ -11,3 +11,31 @@ nav{
     display: flex;
     gap: 1em;
 }
+
+/*Estilo para moviles*/
+@media screen and (max-width: 465px) {
+    /*Especificidad: 001*/
+    header{
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    /*Especificidad: 001*/
+    nav{
+        flex-wrap: wrap;
+    }
+}
+
+/*Estilo para moviles*/
+@media screen and (max-width: 1200px) {
+    /*Especificidad: 001*/
+    header{
+        gap: 1em;
+        flex-wrap: wrap;
+    }
+
+    /*Especificidad: 001*/
+    nav{
+        font-size: 1.2em;
+    }
+}

@@ -34,6 +34,10 @@ svg{
     border-radius: 0.3em;
 }
 
+input{
+    width: fit-content;
+}
+
 /*Especificidad: 002*/
 section+section{
     display: flex;
@@ -107,4 +111,29 @@ section+section+section{
 section+section+section article{
     width: 50em;
     height: 50em;
+}
+
+/*Estilo para moviles*/
+@media screen and (max-width: 465px) {
+
+    img{
+        width: 220%;
+    }
+    section article{
+        width: 26em;
+        height: 26em;
+    }
+
+    /*Especificidad: 004*/
+    section+section article img{
+        margin: 1em;
+        width: 80%;
+        height: 80%;
+    }
+
+    /*Especificidad: 001*/
+    section+section+section article{
+        width: 26em;
+        height: 26em;
+    }
 }

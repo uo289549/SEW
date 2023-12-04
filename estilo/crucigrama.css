@@ -51,3 +51,11 @@ form{
     margin-right: auto;
     width: fit-content;
 }
+
+/*Estilo para moviles*/
+@media screen and (max-width: 465px) {
+    /*Especificidad: 001*/
+    main{
+        width: fit-content;
+    }
+}

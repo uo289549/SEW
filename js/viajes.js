@@ -211,7 +211,7 @@ class Viajes{
 
                 var str = referencia.split('/');
                 a.setAttribute('title', str[2]);
-                a.textContent = referencia;
+                a.textContent = str[2];
 
                 var p = document.createElement('p');
                 p.textContent = "Referencia: ";

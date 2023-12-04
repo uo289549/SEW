@@ -59,3 +59,11 @@ p:nth-child(n+55){
 p[data-state = 'clicked'] {
     border: 2px solid #FFFF00;
 }
+
+/*Estilo para moviles*/
+@media screen and (max-width: 465px) {
+
+    main{
+        width: auto;
+    }
+}

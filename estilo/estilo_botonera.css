@@ -1,7 +1,7 @@
 /* Estilos para una mediaquery
 que muestre la botonera en tablet y móvil */
 section[data-type=botonera] {
-    display: flex;
+    display: none;
     gap: 1em;
     justify-content: center;
     align-items: center;
@@ -19,4 +19,20 @@ section[data-type=botonera] button {
     text-align: center;
     background-color: #000;
     color: #FFF;
+}
+
+/*Estilo para moviles*/
+@media screen and (max-width: 465px) {
+    /*Especificidad: 001*/
+    section[data-type=botonera]{
+        display: flex;
+    }
+}
+
+/*Estilo para moviles*/
+@media screen and (max-width: 1200px) {
+    /*Especificidad: 001*/
+    section[data-type=botonera]{
+        display: flex;
+    }
 }

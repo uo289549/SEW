@@ -41,8 +41,10 @@
         $tiempo = 0;
 
         if(count($_POST)>0){
-            $formulario = 
-
+            $nombre = $_POST["nombre"];
+            $apellidos = $_POST["apellidos"];
+            $nivel = $_POST["nivel"];
+            $tiempo = $_POST["tiempo"];
         }
     ?>
     <header>

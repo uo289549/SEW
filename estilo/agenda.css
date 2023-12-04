@@ -44,3 +44,22 @@ p:nth-child(1){
     font-size: 2em;
     font-weight: bold;
 }
+
+/*Estilo para moviles*/
+@media screen and (max-width: 1200px) {
+
+    article{
+        width: 30%;
+    }
+}
+
+/*Estilo para moviles*/
+@media screen and (max-width: 465px) {
+    section{
+        flex-direction: column;
+    }
+
+    article{
+        width: fit-content;
+    }
+}
