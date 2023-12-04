@@ -11,14 +11,19 @@
     <title>EscritorioVirtual</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/viajes.css" />
+    <link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css">
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@mapbox/togeojson"></script>
+    <script src="js/viajes.js"></script>
 </head>
 
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
     <header>
         <h1>Escritorio Virtual</h1>
-            <p>En desarrollo</p>
             <nav>
                 <a title="EscritorioVirtual" accesskey="I" tabindex="1" href= "index.html">Inicio</a>
                 <a title="Sobremi" accesskey="S" tabindex="2" href= "sobremi.html">Sobre mi</a>
@@ -29,5 +34,32 @@
                 <a title="Juegos" accesskey="J" tabindex="7" href= "juegos.html">Juegos</a>
             </nav>
     </header>
+
+    
+
+    <section>
+        <h2>Mapas</h2>
+        <button>Crear mapa estatico</button>
+        <button>Crear mapa dinamico</button>
+    </section>
+
+    <section>
+        <label for="xml">Rutas:</label>
+        <input type="file" id="xml" onchange="viajes.readInputFile(this.files);">
+    </section>
+
+    <section>
+        <label for="kml">Planimetrias:</label>
+        <input type="file" name="kml" id="kml" onchange="viajes.readInputKML();" multiple>
+    </section>
+
+    <section>
+        <label for="svg">Altimetrias:</label>
+        <input type="file" name="svg" id="svg" onchange="viajes.readInputSVG();" multiple>
+    </section>
+
+    <script>
+        var viajes = new Viajes();
+    </script>
 </body>
 </html>

@@ -11,15 +11,17 @@
     <title>EscritorioVirtual</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/noticias.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/juegos.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/reproductor.css" />
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
-    <script src="js/noticias.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/reproductor.js"></script>
 </head>
 
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
     <header>
-        <h1>Escritorio Virtual</h1> 
+        <h1>Escritorio Virtual</h1>
             <nav>
                 <a title="EscritorioVirtual" accesskey="I" tabindex="1" href= "index.html">Inicio</a>
                 <a title="Sobremi" accesskey="S" tabindex="2" href= "sobremi.html">Sobre mi</a>
@@ -30,31 +32,33 @@
                 <a title="Juegos" accesskey="J" tabindex="7" href= "juegos.html">Juegos</a>
             </nav>
     </header>
-
-    <input type="file" onchange="noticias.readInputFile(this.files)">
-
-    <main>
-        <h2>Noticias</h2>
-    </main>
-
+    
     <section>
-        <label for="titulo">Titulo noticia:</label>
-        <input type="text" id="titulo" placeholder="Introduce titulo de la noticia">
-
-        <label for="subtitulo">Subtitulo noticia:</label>
-        <input type="text" id="subtitulo" placeholder="Introduce subtitulo de la noticia">
-
-        <label for="contenido">Contenido noticia:</label>
-        <input type="text" id="contenido" placeholder="Introduce contenido de la noticia">
-
-        <label for="autor">Autor noticia:</label>
-        <input type="text" id="autor" placeholder="Introduce autor de la noticia">
-
-        <button>Crear noticia</button>
+        <h2>Menú Juegos</h2>
+        <nav>
+            <a title="Memoria" accesskey="E" tabindex="8" href= "memoria.html">Memoria</a>
+            <a title="Sudoku" accesskey="U" tabindex="9" href= "sudoku.html">Sudoku</a>
+            <a title="Crucigrama" accesskey="C" tabindex="10" href= "crucigrama.php">Crucigrama</a>
+            <a title="Reproductor" accesskey="R" tabindex="11" href= "reproductorMusica.html">Reproductor musica</a>
+        </nav>
     </section>
 
+    <label for="musica">Añadir musica:</label>
+    <input type="file" id="musica" onchange="reproductor.cargarMusica();" multiple>
+
+    <main>
+        <section>
+            <h2>Lista de musica</h2>
+        </section>
+
+        <section>
+            <h2>Reproduciendo</h2>
+        </section>
+    </main>
+
     <script>
-        var noticias = new Noticias();
+        var reproductor = new Reproductor();
     </script>
+
 </body>
 </html>

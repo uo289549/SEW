@@ -24,9 +24,11 @@ article {
     height: auto;
     margin: 0.5em;
 
+    border: 0.3em inset #000;
     border-radius: 0.3em;
-    background-color: #005B94;
-    color: #FFF;
+
+    background-color: #63FCE8;
+    color: #000;
     position: relative;
 
     display: flex;

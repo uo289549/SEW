@@ -1,5 +1,20 @@
 <!DOCTYPE HTML>
+<?php>
+    class Record(){
 
+        private $server;
+        private $user;
+        private $pass;
+        private $dbname;
+
+        public function __construct(){
+            $this->server = "localhost";
+            $this->user = "DBUSER2023";
+            $this->pass = "DBPSWD2023";
+            $this->dbname = "records";
+        }        
+    }
+<?>
 <html lang="es">
 <head>
     <!-- Datos que describen el documento -->
@@ -12,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
     <link rel="stylesheet" type="text/css" href="estilo/crucigrama.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/estilo_botonera.css" />
     <link rel="icon" href="multimedia/archivosGraficos/favicon.ico" sizes="32x32" type="image/ico"/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/crucigrama.js"></script>
@@ -36,15 +52,33 @@
     <nav>
         <a title="Memoria" accesskey="E" tabindex="8" href= "memoria.html">Memoria</a>
         <a title="Sudoku" accesskey="U" tabindex="9" href= "sudoku.html">Sudoku</a>
-        <a title="Crucigrama" accesskey="C" tabindex="10" href= "crucigrama.html">Crucigrama</a>
+        <a title="Crucigrama" accesskey="C" tabindex="10" href= "crucigrama.php">Crucigrama</a>
+        <a title="Reproductor" accesskey="R" tabindex="11" href= "reproductorMusica.html">Reproductor musica</a>
     </nav>
 
     <h2>Crucigrama</h2>
     <main>
     </main>
+
+    <section data-type="botonera">
+        <h2>Botonera</h2>
+        <button onclick="crucigrama.pulsarTecla(1)">1</button>
+        <button onclick="crucigrama.pulsarTecla(2)">2</button>
+        <button onclick="crucigrama.pulsarTecla(3)">3</button>
+        <button onclick="crucigrama.pulsarTecla(4)">4</button>
+        <button onclick="crucigrama.pulsarTecla(5)">5</button>
+        <button onclick="crucigrama.pulsarTecla(6)">6</button>
+        <button onclick="crucigrama.pulsarTecla(7)">7</button>
+        <button onclick="crucigrama.pulsarTecla(8)">8</button>
+        <button onclick="crucigrama.pulsarTecla(9)">9</button>
+        <button onclick="crucigrama.pulsarTecla('*')">*</button>
+        <button onclick="crucigrama.pulsarTecla('+')">+</button>
+        <button onclick="crucigrama.pulsarTecla('-')">-</button>
+        <button onclick="crucigrama.pulsarTecla('/')">/</button>
+    </section>
     
     <script>
-        var crucigrama = new Crucigrama("facil");
+        var crucigrama = new Crucigrama("dificil");
         crucigrama.start();
         crucigrama.paintMathword();
     </script>
