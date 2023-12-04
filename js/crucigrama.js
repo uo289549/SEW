@@ -10,6 +10,8 @@ class Crucigrama{
         this.dificultadSeleccionada = dificultad;
         this.escogerDificultad(dificultad);
         this.iniciarTablero();
+
+        this.eventoPulsacion = (event) => this.pulsarTecla(event);
     }
 
     escogerDificultad(dificultad){
@@ -58,8 +60,9 @@ class Crucigrama{
     }
 
     paintMathword(){
+        
 
-        window.addEventListener('keydown', (event) => this.pulsarTecla(event));
+        window.addEventListener('keydown',this.eventoPulsacion);
 
         for (let fila = 0; fila < this.numFilas; fila++) {
             for (let columna = 0; columna < this.numColumnas; columna++) {
@@ -223,7 +226,7 @@ class Crucigrama{
             this.end_Time = new Date();
             const dif = this.calculate_date_difference();
             alert("Has ganado en " + this.convertSecondsToHoursMinutsAndSeconds(dif) + " segundos");
-            createRecordForm(dif);
+            this.createRecordForm(dif);
         }
 
     }
@@ -252,61 +255,74 @@ class Crucigrama{
         return horas + ':' + minutos + ':' + segundos;
     }
 
-    createRecordForm(){
-        const formulario = $('<form>');
-        formulario.attr('action', '#');
-        formulario.attr('method', 'post');
-        formulario.attr('name', 'crucigrama');
+    createRecordForm(dif){
+        window.removeEventListener('keydown', this.eventoPulsacion);
 
-        //Campo nombre
-        var parrafo = $('<p>');
-        parrafo.text("Nombre:");
-
-        var input = $('<input>');
-        input.attr('type','text');
-        input.attr('name','nombre');
-        input.attr('value','');
-
-        parrafo.append(input);
-        formulario.append(parrafo);
-        
-        //Campo apellidos
-        parrafo = $('<p>');
-        parrafo.text("Apellidos:");
-
-        input = $('<input>');
-        input.attr('type','text');
-        input.attr('name','apellidos');
-        input.attr('value','');
-
-        parrafo.append(input);
-        formulario.append(parrafo);
-
-        //Campo nivel
-        parrafo = $('<p>');
-        parrafo.text("Nivel:");
-
-        input = $('<input>');
-        input.attr('type','text');
-        input.attr('name','nivel');
-        input.attr('value',this.dificultadSeleccionada);
-        input.attr('readonly');
-
-        parrafo.append(input);
-        formulario.append(parrafo);
-
-        //Campo tiempo
-        parrafo = $('<p>');
-        parrafo.text("Tiempo:");
-
-        input = $('<input>');
-        input.attr('type','text');
-        input.attr('name','tiempo');
-        input.attr('value',this.dificultadSeleccionada);
-        input.attr('readonly');
-
-        parrafo.append(input);
-        formulario.append(parrafo);
-
+        var nivel = this.dificultadSeleccionada;
+        var diferencia = this.convertSecondsToHoursMinutsAndSeconds(dif);
+        $(document).ready(function(){
+            const formulario = $('<form>');
+            formulario.attr('action', '#');
+            formulario.attr('method', 'post');
+            formulario.attr('name', 'crucigrama');
+    
+            //Campo nombre
+            var parrafo = $('<p>');
+            parrafo.text("Nombre:");
+    
+            var input = $('<input>');
+            input.attr('type','text');
+            input.attr('name','nombre');
+            input.attr('value','');
+    
+            parrafo.append(input);
+            formulario.append(parrafo);
+            
+            //Campo apellidos
+            parrafo = $('<p>');
+            parrafo.text("Apellidos:");
+    
+            input = $('<input>');
+            input.attr('type','text');
+            input.attr('name','apellidos');
+            input.attr('value','');
+    
+            parrafo.append(input);
+            formulario.append(parrafo);
+    
+            //Campo nivel
+            parrafo = $('<p>');
+            parrafo.text("Nivel:");
+    
+            input = $('<input>');
+            input.attr('type','text');
+            input.attr('name','nivel');
+            input.attr('value',nivel);
+            input.attr('readonly','');
+    
+            parrafo.append(input);
+            formulario.append(parrafo);
+    
+            //Campo tiempo
+            parrafo = $('<p>');
+            parrafo.text("Tiempo:");
+    
+            input = $('<input>');
+            input.attr('type','text');
+            input.attr('name','tiempo');
+            input.attr('value',diferencia);
+            input.attr('readonly','');
+    
+            parrafo.append(input);
+            formulario.append(parrafo);
+    
+            input = $('<input>');
+            input.attr('type','submit');
+            input.attr('value','Enviar');
+            formulario.append(input);
+    
+            $('main').after(formulario);
+    
+        });
     }
 }

@@ -41,3 +41,13 @@ p[data-state = 'empty'] {
 p[data-state = 'clicked'] {
     border: 2px solid #FFFF00;
 }
+
+form{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}

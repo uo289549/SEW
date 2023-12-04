@@ -1,20 +1,4 @@
 <!DOCTYPE HTML>
-<?php>
-    class Record(){
-
-        private $server;
-        private $user;
-        private $pass;
-        private $dbname;
-
-        public function __construct(){
-            $this->server = "localhost";
-            $this->user = "DBUSER2023";
-            $this->pass = "DBPSWD2023";
-            $this->dbname = "records";
-        }        
-    }
-<?>
 <html lang="es">
 <head>
     <!-- Datos que describen el documento -->
@@ -34,7 +18,23 @@
 </head>
 
 <body>
-    <!-- Datos con el contenidos que aparece en el navegador -->
+    <!-- localhost/SEW/juegos.html -->
+    <?php>
+        class Record(){
+
+            private $server;
+            private $user;
+            private $pass;
+            private $dbname;
+
+            public function __construct(){
+                $this->server = "localhost";
+                $this->user = "DBUSER2023";
+                $this->pass = "DBPSWD2023";
+                $this->dbname = "records";
+            }        
+        }
+    <?>
     <header>
         <h1>Escritorio Virtual</h1>
             <nav>
@@ -78,7 +78,7 @@
     </section>
     
     <script>
-        var crucigrama = new Crucigrama("dificil");
+        var crucigrama = new Crucigrama("facil");
         crucigrama.start();
         crucigrama.paintMathword();
     </script>
