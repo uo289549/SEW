@@ -37,30 +37,13 @@
     <nav>
         <a title="Memoria" accesskey="E" tabindex="8" href= "memoria.html">Memoria</a>
         <a title="Sudoku" accesskey="U" tabindex="9" href= "sudoku.html">Sudoku</a>
-        <a title="Crucigrama" accesskey="C" tabindex="10" href= "crucigrama.html">Crucigrama</a>
+        <a title="Crucigrama" accesskey="C" tabindex="10" href= "crucigrama.php">Crucigrama</a>
         <a title="Reproductor" accesskey="R" tabindex="11" href= "reproductorMusica.html">Reproductor musica</a>
     </nav>
 
     <h2>Crucigrama</h2>
     <main>
     </main>
-
-    <section data-type="botonera">
-        <h2>Botonera</h2>
-        <button onclick="crucigrama.pulsarTecla(1)">1</button>
-        <button onclick="crucigrama.pulsarTecla(2)">2</button>
-        <button onclick="crucigrama.pulsarTecla(3)">3</button>
-        <button onclick="crucigrama.pulsarTecla(4)">4</button>
-        <button onclick="crucigrama.pulsarTecla(5)">5</button>
-        <button onclick="crucigrama.pulsarTecla(6)">6</button>
-        <button onclick="crucigrama.pulsarTecla(7)">7</button>
-        <button onclick="crucigrama.pulsarTecla(8)">8</button>
-        <button onclick="crucigrama.pulsarTecla(9)">9</button>
-        <button onclick="crucigrama.pulsarTecla('*')">*</button>
-        <button onclick="crucigrama.pulsarTecla('+')">+</button>
-        <button onclick="crucigrama.pulsarTecla('-')">-</button>
-        <button onclick="crucigrama.pulsarTecla('/')">/</button>
-    </section>
 
     <label for="musica">Añadir musica:</label>
     <input type="file" id="musica" onchange="reproductor.cargarMusica();" multiple>

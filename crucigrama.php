@@ -19,8 +19,8 @@
 
 <body>
     <!-- localhost/SEW/juegos.html -->
-    <?php>
-        class Record(){
+    <?php
+        class Record{
 
             private $server;
             private $user;
@@ -34,7 +34,17 @@
                 $this->dbname = "records";
             }        
         }
-    <?>
+
+        $nombre = "";
+        $apellidos = "";
+        $nivel = "";
+        $tiempo = 0;
+
+        if(count($_POST)>0){
+            $formulario = 
+
+        }
+    ?>
     <header>
         <h1>Escritorio Virtual</h1>
             <nav>
