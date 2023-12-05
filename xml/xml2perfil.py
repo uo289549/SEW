@@ -40,7 +40,7 @@ def obtenerAlturas(archivoXML):
                 listaAlturas.append(penultimoPto)
                 listaAlturas.append(ultimoPto)
 
-                listaRutas.append(listaAlturas)
+                listaRutas.append(ajustarAlturas(listaAlturas))
                 listaAlturas = []
                 primerPto = True
 
@@ -67,10 +67,37 @@ def obtenerAlturas(archivoXML):
     listaAlturas.append(penultimoPto)
     listaAlturas.append(ultimoPto)
 
-    listaRutas.append(listaAlturas)
+    listaRutas.append(ajustarAlturas(listaAlturas))
 
 
     return listaRutas
+
+
+
+def ajustarAlturas(listaAlturas):
+
+     altitudMaxima = 1000
+     for pto in listaAlturas:
+
+        altitudPto = float(pto.strip("\n").split(",")[1])
+        if altitudPto < altitudMaxima:
+            altitudMaxima = float(altitudPto)
+
+     altitudMaxima = altitudMaxima - 50
+
+     nuevaLista = []
+     for pto in listaAlturas:
+        punto = pto.strip("\n").split(",")
+        distanciaPto = punto[0]
+        altitudPto = punto[1]
+
+        altura = distanciaPto + "," + str(float(altitudPto) - altitudMaxima) + '\n'
+        nuevaLista.append(altura)
+
+     return nuevaLista
+
+
+
 
 
 
