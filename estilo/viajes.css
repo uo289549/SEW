@@ -26,7 +26,7 @@ img{
     border-radius: 0.3em;
 }
 
-svg{
+section+section+section+section svg{
     width: 50em;
     height: 50em;
     
@@ -111,6 +111,60 @@ section+section+section{
 section+section+section article{
     width: 50em;
     height: 50em;
+}
+
+section+section+section+section+section{
+    width: 100%;
+    max-width: 100vh;
+    height: 70vh;
+    position: relative;
+    overflow: hidden; /* <===  */
+    border-radius: 1em;
+}
+
+section+section+section+section+section h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5em;
+    font-size: 2em;
+}
+
+section+section+section+section+section img{
+    width: 100%;
+    max-width: 100vh;
+    height: 60vh;
+    position: absolute;
+    transition: all 0.5s;
+    object-fit: cover;
+    border-radius: 0.5em;
+    border: none;
+}
+
+section+section+section+section+section button{
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    padding: 0.5em;
+    border: none;
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 1em;
+}
+
+section+section+section+section+section button:active {
+    transform: scale(1.1);
+}
+
+section+section+section+section+section button[data-action=prev] {
+    top: 50%;
+    left: 2%;
+}
+
+section+section+section+section+section button[data-action=next] {
+    top: 50%;
+    right: 2%;
 }
 
 /*Estilo para moviles*/
