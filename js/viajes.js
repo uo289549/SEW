@@ -9,6 +9,7 @@ class Viajes{
         this.precisionAltitud = null;
 
         this.mapaEstaticoCreado = false;
+        this.mapaDinamicoCreado = false;
         this.contenidoXml = null;
         this.mapaParaKML = null;
         this.numRuta = 0;
@@ -76,27 +77,30 @@ class Viajes{
     }
 
     mostrarMapaDinamico(){
-        const section = document.querySelector("section");
+        if(!this.mapaDinamicoCreado){
+            this.mapaDinamicoCreado = true;
+
+            const section = document.querySelector("section");
 
 
-        const article = document.createElement("article");
-        article.setAttribute("id", "mapa");
-        section.appendChild(article);
-
-
-        mapboxgl.accessToken = 'pk.eyJ1IjoidW8yODk1NDkiLCJhIjoiY2xwbzNmeHQ0MDVtaDJpbDNoNDljM3R0ZSJ9.rx6By1f83P_Kg1HKG4aEjA';
-        const map = new mapboxgl.Map({
-            container: 'mapa', // container ID
-            style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [this.longitud, this.latitud], // starting position [lng, lat]
-            zoom: 9 // starting zoom
-        });
-
-        const long = this.longitud;
-        const lat = this.latitud;
-
-        new mapboxgl.Marker().setLngLat([long, lat]).addTo(map);
-
+            const article = document.createElement("article");
+            article.setAttribute("id", "mapa");
+            section.appendChild(article);
+    
+    
+            mapboxgl.accessToken = 'pk.eyJ1IjoidW8yODk1NDkiLCJhIjoiY2xwbzNmeHQ0MDVtaDJpbDNoNDljM3R0ZSJ9.rx6By1f83P_Kg1HKG4aEjA';
+            const map = new mapboxgl.Map({
+                container: 'mapa', // container ID
+                style: 'mapbox://styles/mapbox/streets-v12', // style URL
+                center: [this.longitud, this.latitud], // starting position [lng, lat]
+                zoom: 9 // starting zoom
+            });
+    
+            const long = this.longitud;
+            const lat = this.latitud;
+    
+            new mapboxgl.Marker().setLngLat([long, lat]).addTo(map);    
+        }
     }
 
     readInputFile(archivos){

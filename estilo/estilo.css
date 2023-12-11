@@ -49,10 +49,16 @@ a:active, a:hover, a:focus{
 }
 
 /*Especificidad: 001*/
-ul, ol {
+ul {
     font-size: 0.9em;
     font-family: 'Times New Roman', serif;
     list-style-type : square;
+}
+
+ol{
+    font-size: 0.9em;
+    font-family: 'Times New Roman', serif;
+    list-style-type : upper-roman;
 }
 
 /*Especificidad: 012*/

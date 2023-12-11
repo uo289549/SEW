@@ -18,15 +18,15 @@ main {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     gap: 0;
-    border: 3px solid #000;
+    border: 0.3em solid #000;
 }
 
 /*Especificidad: 001*/
 p {
-    padding: 5px;
+    padding: 0.5em;
     margin: 0;
     text-align: center;
-    border: 1px solid #000;
+    border: 0.1em solid #000;
     font-size: 1.5em;
     background-color: #A8C1E1;
     /* #6395CA */
@@ -39,7 +39,7 @@ p[data-state = 'empty'] {
 
 /*Especificidad: 011*/
 p[data-state = 'clicked'] {
-    border: 2px solid #FFFF00;
+    border: 0.2em solid #FFFF00;
 }
 
 form{
@@ -49,6 +49,25 @@ form{
     margin-top: 1em;
     margin-left: auto;
     margin-right: auto;
+    width: fit-content;
+}
+
+section+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ol{
+    border: 0.1em solid #000;
+    border-radius: 0.3em;
+    width: fit-content;
+    background-color: #A8C1E1;
+}
+
+li{
+    margin: 1em;
     width: fit-content;
 }
 

@@ -27,24 +27,55 @@
             private $pass;
             private $dbname;
 
+            private $nivel;
+
             public function __construct(){
                 $this->server = "localhost";
                 $this->user = "DBUSER2023";
                 $this->pass = "DBPSWD2023";
                 $this->dbname = "records";
-            }        
-        }
+            }
 
-        $nombre = "";
-        $apellidos = "";
-        $nivel = "";
-        $tiempo = 0;
+            public function añadirRecord($nombre, $apellidos, $nivel, $tiempo){
 
-        if(count($_POST)>0){
-            $nombre = $_POST["nombre"];
-            $apellidos = $_POST["apellidos"];
-            $nivel = $_POST["nivel"];
-            $tiempo = $_POST["tiempo"];
+                $this->nivel = $nivel;
+
+                $connexion = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+                $consulta = "INSERT INTO registro (nombre, apellidos, nivel, tiempo) VALUES (?, ?, ?, ?)";
+
+                $preparedStatement = $connexion->prepare($consulta);
+                $preparedStatement->bind_param("ssss", $nombre, $apellidos, $nivel, $tiempo);
+                $preparedStatement->execute();
+
+                $preparedStatement->close();
+                $connexion->close();
+            }
+
+            public function obtenerRecords(){
+
+
+                $connexion = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+                $consulta = "SELECT nombre, apellidos, tiempo FROM registro WHERE nivel=? ORDER BY tiempo ASC LIMIT 10";
+
+                $preparedStatement = $connexion->prepare($consulta);
+                $preparedStatement->bind_param("s",$this->nivel);
+                $preparedStatement->execute();
+
+                $resultado = $preparedStatement->get_result();
+
+                $preparedStatement->close();
+                $connexion->close();
+
+                echo "<section>";
+                echo "<h2>Mejores 10 tiempos en la dificultad: {$this->nivel}</h2>";
+                echo "<ol>";
+                while ($fila = $resultado->fetch_assoc()) {
+                    // Accede a los valores de cada fila
+                    echo "<li>Nombre: ".$fila['nombre'].", Apellidos: ".$fila['apellidos'].", Tiempo: ".$fila['tiempo']."</li>";
+                }
+                echo "</ol>";
+                echo "</section>";
+            }
         }
     ?>
     <header>
@@ -88,6 +119,14 @@
         <button onclick="crucigrama.pulsarTecla('-')">-</button>
         <button onclick="crucigrama.pulsarTecla('/')">/</button>
     </section>
+
+    <?php
+        if(count($_POST)>0){
+            $record = new Record();
+            $record->añadirRecord($_POST["nombre"], $_POST["apellidos"], $_POST["nivel"], $_POST["tiempo"]);
+            $record->obtenerRecords();
+        }
+    ?>
     
     <script>
         var crucigrama = new Crucigrama("facil");
