@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <!-- Datos con el contenidos que aparece en el navegador -->
+    <!-- Datos con el contenidos que aparece en el navegador --> 
     <?php
     class Carrusel{
 
