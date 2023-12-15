@@ -46,7 +46,7 @@ class Reproductor {
             const article = document.querySelector(articulo);
             article.dataset.reproduciendo = "enLista";
 
-            dropArea.querySelector('main').appendChild(article);
+            dropArea.querySelector('section').appendChild(article);
 
             dropArea.dataset.vacia = "false";
         });
@@ -72,7 +72,9 @@ class Reproductor {
                 event.dataTransfer.setData('text/plain', event.target.getAttribute('data-posicionEnLista'));
             });
 
-            article.textContent = this.listaCanciones[i].name;
+            const h3 = document.createElement('h3');
+            h3.textContent = this.listaCanciones[i].name;
+            article.appendChild(h3);
 
             section.appendChild(article);
         }
@@ -136,7 +138,7 @@ class Reproductor {
 
         const cancionReproduciendo = this.cancionReproduciendo;
 
-        document.querySelector('section main').removeChild(cancionReproduciendo);
+        document.querySelector('section section').removeChild(cancionReproduciendo);
         cancionReproduciendo.dataset.reproduciendo = "noLista";
 
         var section = document.querySelectorAll('section')[0];

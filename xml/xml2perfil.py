@@ -104,7 +104,7 @@ def ajustarAlturas(listaAlturas):
 def prologoSVG(archivo, nombre):
 
     archivo.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-    archivo.write('<svg xmlns="http://www.w3.org/2000/svg" version="2.0">\n')
+    archivo.write('<svg xmlns="http://www.w3.org/2000/svg" version="1.1">\n')
     archivo.write('<polyline points=\n"')
 
 def epilogoSVG(archivo):

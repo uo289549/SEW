@@ -1,13 +1,16 @@
+/*Especificidad: 001*/
 h2{
     font-size: 2.5em;
 }
 
+/*Especificidad: 001*/
 section{
     display: flex;
     flex-direction: column;
     width: 20%;
 }
 
+/*Especificidad: 001*/
 main {
     display: flex;
     flex-direction: column;
@@ -16,6 +19,7 @@ main {
     margin: auto;
 }
 
+/*Especificidad: 001*/
 article{
     border: 0.3em inset #000;
     border-radius: 0.3em;
@@ -27,25 +31,31 @@ article{
     margin: 0.5em;
 }
 
+/*Especificidad: 001*/
 h3{
     font-weight: bold;
     text-align: center;
     font-size: 1.8em;
 }
 
+/*Especificidad: 001*/
 h4{
     font-weight: 500;
     text-align: center;
     font-size: 1.5em;
 }
 
+/*Especificidad: 001*/
 p{
     margin: 1.5em;
 }
+
+/*Especificidad: 011*/
 p:last-child{
     text-align: end;
 }
 
+/*Especificidad: 001*/
 input{
     margin-bottom: 1em;
 }

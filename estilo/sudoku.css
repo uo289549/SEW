@@ -63,6 +63,7 @@ p[data-state = 'clicked'] {
 /*Estilo para moviles*/
 @media screen and (max-width: 465px) {
 
+    /*Especificidad: 001*/
     main{
         width: auto;
     }

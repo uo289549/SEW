@@ -52,11 +52,11 @@ class Agenda {
                             const fechaCarrera = $('Date',datos).eq(i).text();
                             const horaCarrera = $('Time',datos).eq(i).text();
 
-                            let parrafo = document.createElement('p');
-                            parrafo.textContent = nombreCarrera;
-                            article.appendChild(parrafo);
+                            let h3 = document.createElement('h3');
+                            h3.textContent = nombreCarrera;
+                            article.appendChild(h3);
 
-                            parrafo = document.createElement('p');
+                            let parrafo = document.createElement('p');
                             parrafo.textContent = "En: "+nombreCircuito;
                             article.appendChild(parrafo);
 
@@ -99,11 +99,11 @@ class Agenda {
             const fechaCarrera = $('Date',datos).eq(i);
             const horaCarrera = $('Time',datos).eq(i);
 
-            let parrafo = document.createElement('p');
-            parrafo.textContent = nombreCarrera;
-            article.appendChild(parrafo);
+            let h3 = document.createElement('h3');
+            h3.textContent = nombreCarrera;
+            article.appendChild(h3);
 
-            parrafo = document.createElement('p');
+            let parrafo = document.createElement('p');
             parrafo.textContent = "En: "+nombreCircuito;
             article.appendChild(parrafo);
 

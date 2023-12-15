@@ -56,6 +56,8 @@ class Pais{
                     
                     let listaDias = datos.list;
 
+                    let dia = 1;
+
                     for (let i = 0; i < listaDias.length; i++) {
 
                         let datosDia = listaDias[i];
@@ -65,6 +67,11 @@ class Pais{
                         if(fecha[1] === "12:00:00"){
                             const article = document.createElement('article');
 
+
+                            let h3 = document.createElement('h3');
+                            h3.textContent = "Prevision dia " + dia;
+                            article.appendChild(h3);
+                            dia++;
 
                             let parrafo = document.createElement('p');
                             parrafo.textContent = "Fecha: "+datosDia.dt_txt;

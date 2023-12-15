@@ -39,8 +39,8 @@ article {
     text-align: center;
 }
 
-/*Especificidad: 011*/
-p:nth-child(1){
+/*Especificidad: 002*/
+article h3{
     font-size: 2em;
     font-weight: bold;
 }
@@ -48,6 +48,7 @@ p:nth-child(1){
 /*Estilo para moviles*/
 @media screen and (max-width: 1200px) {
 
+    /*Especificidad: 001*/
     article{
         width: 30%;
     }
@@ -55,10 +56,12 @@ p:nth-child(1){
 
 /*Estilo para moviles*/
 @media screen and (max-width: 465px) {
+    /*Especificidad: 001*/
     section{
         flex-direction: column;
     }
 
+    /*Especificidad: 001*/
     article{
         width: fit-content;
     }

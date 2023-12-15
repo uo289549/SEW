@@ -42,6 +42,7 @@ p[data-state = 'clicked'] {
     border: 0.2em solid #FFFF00;
 }
 
+/*Especificidad: 001*/
 form{
     display: flex;
     flex-direction: column;
@@ -52,6 +53,7 @@ form{
     width: fit-content;
 }
 
+/*Especificidad: 002*/
 section+section {
     display: flex;
     flex-direction: column;
@@ -59,6 +61,7 @@ section+section {
     align-items: center;
 }
 
+/*Especificidad: 001*/
 ol{
     border: 0.1em solid #000;
     border-radius: 0.3em;
@@ -66,6 +69,7 @@ ol{
     background-color: #A8C1E1;
 }
 
+/*Especificidad: 001*/
 li{
     margin: 1em;
     width: fit-content;

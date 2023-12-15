@@ -8,6 +8,7 @@ section{
     height: 40%;
 }
 
+/*Especificidad: 001*/
 button{
     width: fit-content;
 }
@@ -21,11 +22,13 @@ article{
     border-radius: 0.3em;
 }
 
+/*Especificidad: 001*/
 img{
     border: 0.2em inset #000;
     border-radius: 0.3em;
 }
 
+/*Especificidad: 005*/
 section+section+section+section svg{
     width: 50em;
     height: 50em;
@@ -34,6 +37,7 @@ section+section+section+section svg{
     border-radius: 0.3em;
 }
 
+/*Especificidad: 001*/
 input{
     width: fit-content;
 }
@@ -57,7 +61,7 @@ section+section article{
 }
 
 /*Especificidad: 004*/
-section+section article p{
+section+section article p, section+section article h3{
     margin: 1em;
 }
 
@@ -98,6 +102,7 @@ section+section article a:active, section+section article a:hover, section+secti
     
 }
 
+/*Especificidad: 003*/
 section+section+section{
     margin-top: 1em;
     display: flex;
@@ -107,21 +112,23 @@ section+section+section{
     height: 40%;
 }
 
-/*Especificidad: 001*/
+/*Especificidad: 004*/
 section+section+section article{
     width: 50em;
     height: 50em;
 }
 
+/*Especificidad: 005*/
 section+section+section+section+section{
     width: 100%;
     max-width: 100vh;
     height: 70vh;
     position: relative;
-    overflow: hidden; /* <===  */
+    overflow: hidden; 
     border-radius: 1em;
 }
 
+/*Especificidad: 005*/
 section+section+section+section+section h2 {
     width: 100%;
     text-align: center;
@@ -129,6 +136,7 @@ section+section+section+section+section h2 {
     font-size: 2em;
 }
 
+/*Especificidad: 006*/
 section+section+section+section+section img{
     width: 100%;
     max-width: 100vh;
@@ -140,6 +148,7 @@ section+section+section+section+section img{
     border: none;
 }
 
+/*Especificidad: 006*/
 section+section+section+section+section button{
     position: absolute;
     width: 2em;
@@ -153,15 +162,18 @@ section+section+section+section+section button{
     font-size: 1em;
 }
 
+/*Especificidad: 016*/
 section+section+section+section+section button:active {
     transform: scale(1.1);
 }
 
+/*Especificidad: 016*/
 section+section+section+section+section button[data-action=prev] {
     top: 50%;
     left: 2%;
 }
 
+/*Especificidad: 016*/
 section+section+section+section+section button[data-action=next] {
     top: 50%;
     right: 2%;
@@ -170,9 +182,11 @@ section+section+section+section+section button[data-action=next] {
 /*Estilo para moviles*/
 @media screen and (max-width: 465px) {
 
+    /*Especificidad: 001*/
     img{
         width: 220%;
     }
+    /*Especificidad: 002*/
     section article{
         width: 26em;
         height: 26em;
@@ -185,7 +199,7 @@ section+section+section+section+section button[data-action=next] {
         height: 80%;
     }
 
-    /*Especificidad: 001*/
+    /*Especificidad: 004*/
     section+section+section article{
         width: 26em;
         height: 26em;

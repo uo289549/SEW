@@ -20,8 +20,32 @@
     <?php
         class Resultados{
 
+            private $server;
+            private $user;
+            private $pass;
+
             public function __construct(){
-                
+                $this->server = "localhost";
+                $this->user = "DBUSER2023";
+                $this->pass = "DBPSWD2023";
+
+                $connexion = new mysqli($this->server, $this->user, $this->pass);
+
+                // Verificar conexión
+                if ($connexion->connect_error) {
+                    die("Conexión fallida: " . $connexion->connect_error);
+                }
+
+                // Crear base de datos
+                $sql = file_get_contents('baseDeDatos.sql');
+                if ($connexion->multi_query($sql) === TRUE) {
+                    echo "Base de datos creada correctamente";
+                } else {
+                    echo "Error al crear la base de datos: " . $connexion->error;
+                }
+
+                // Cerrar conexión
+                $connexion->close();
             }
         }
     ?>
@@ -48,5 +72,10 @@
             <a title="Resultados" accesskey="F" tabindex="12" href= "../php/resultadosF1.php">Resultados F1</a>
         </nav>
     </section>
+
+    <?php
+        $resultados = new Resultados();
+    ?>
+
 </body>
 </html>

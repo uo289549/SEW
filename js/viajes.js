@@ -88,6 +88,10 @@ class Viajes{
             const article = document.createElement("article");
             article.setAttribute("id", "mapa");
             section.appendChild(article);
+            
+            const h3 = document.createElement("h3");
+            h3.textContent = "Mapa dinamico";
+            article.appendChild(h3);
     
     
             mapboxgl.accessToken = 'pk.eyJ1IjoidW8yODk1NDkiLCJhIjoiY2xwbzNmeHQ0MDVtaDJpbDNoNDljM3R0ZSJ9.rx6By1f83P_Kg1HKG4aEjA';
@@ -134,12 +138,12 @@ class Viajes{
 
 
             var nombre = $(this).find('nombre').text();
-            let p = document.createElement('p');
-            p.textContent = "Nombre de ruta: "+nombre;
-            article.appendChild(p);
+            let h3 = document.createElement('h3');
+            h3.textContent = "Nombre de ruta: "+nombre;
+            article.appendChild(h3);
 
             var tipo = $(this).find('tipo').text();
-            p = document.createElement('p');
+            let p = document.createElement('p');
             p.textContent = "Tipo: "+tipo;
             article.appendChild(p);
 
@@ -243,9 +247,9 @@ class Viajes{
                 $(this).find('hito').each(function() {
                 
                     var nombreHito = $(this).find('nombreHito').text();
-                    p = document.createElement('p');
-                    p.textContent = "Nombre del hito: "+nombreHito;
-                    articleHito.appendChild(p);
+                    let h4 = document.createElement('h4');
+                    h4.textContent = "Nombre del hito: "+nombreHito;
+                    articleHito.appendChild(h4);
     
                     var descripcionHito = $(this).find('descripcionHito').text();
                     p = document.createElement('p');
@@ -368,6 +372,10 @@ class Viajes{
         article.setAttribute("id", "mapaKML");
         section.appendChild(article);
 
+        const h3 = document.createElement("h3");
+        h3.textContent = "Mapa Planimetrias";
+        article.appendChild(h3);
+
         mapboxgl.accessToken = 'pk.eyJ1IjoidW8yODk1NDkiLCJhIjoiY2xwbzNmeHQ0MDVtaDJpbDNoNDljM3R0ZSJ9.rx6By1f83P_Kg1HKG4aEjA';
         const map = new mapboxgl.Map({
             container: 'mapaKML', // container ID
@@ -450,11 +458,9 @@ class Viajes{
         const svgParseado = $.parseXML(svgString);
 
         const xmlns = $(svgParseado).find('svg').attr('xmlns');
-        const version = $(svgParseado).find('svg').attr('version');
 
         var svgElement = document.createElementNS(xmlns, "svg");
         svgElement.setAttribute("xmlns", xmlns);
-        svgElement.setAttribute("version", version);
         svgElement.innerHTML = svgString;
 
         section.appendChild(svgElement);
