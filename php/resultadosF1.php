@@ -23,11 +23,13 @@
             private $server;
             private $user;
             private $pass;
+            private $dbname;
 
             public function __construct(){
                 $this->server = "localhost";
                 $this->user = "DBUSER2023";
                 $this->pass = "DBPSWD2023";
+                $this->dbname = "F1Database";
 
                 $connexion = new mysqli($this->server, $this->user, $this->pass);
 
@@ -47,6 +49,94 @@
                 // Cerrar conexión
                 $connexion->close();
             }
+
+            public function crearDatos() {
+
+                $connexion = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+                $consulta = "INSERT INTO Pilotos (PilotoID, Nombre, Apellidos, Numero, Nacionalidad, Edad, EquipoID) VALUES (?, ?, ?, ?)";
+
+                $preparedStatement = $connexion->prepare($consulta);
+                $preparedStatement->bind_param("isssssi", 1, "Max", "Verstappen", "1", "Paises Bajos", "26", 1);
+                $preparedStatement->execute();
+                
+                $preparedStatement->bind_param("isssssi", 2, "Sergio", "Pérez", "11", "Mexico", "33", 1);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 3, "Charles", "Leclerc", "16", "Monaco", "26", 2);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 4, "Carlos", "Sainz", "55", "España", "29", 2);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 5, "George", "Russell", "63", "Reino Unido", "25", 3);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 6, "Lewis", "Hamilton", "44", "Reino Unido", "38", 3);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 7, "Esteban", "Ocon", "31", "Francia", "27", 4);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 8, "Pierre", "Gasly", "10", "Francia", "27", 4);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 9, "Lando", "Norris", "4", "Reino Unido", "24", 5);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 10, "Oscar", "Piastri", "81", "Australia", "22", 5);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 11, "Valtteri", "Bottas", "77", "Finlandia", "34", 6);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 12, "Guanyu", "Zhou", "24", "China", "24", 6);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 13, "Fernando", "Alonso", "14", "España", "42", 7);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 14, "Lance", "Stroll", "18", "Canada", "25", 7);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 15, "Kevin", "Magnussen", "20", "Dinamarca", "31", 8);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 16, "Nico", "Hulkenberg", "27", "Alemania", "36", 8);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 17, "Yuki", "Tsunoda", "22", "Japon", "23", 9);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 18, "Daniel", "Ricciardo", "3", "Australia", "34", 9);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 19, "Alexander", "Albon", "23", "Tailandia", "27", 10);
+                $preparedStatement->execute();
+
+                $preparedStatement->bind_param("isssssi", 20, "Logan", "Sargeant", "2", "Estados Unidos", "22", 10);
+                $preparedStatement->execute();
+
+                $preparedStatement->close();
+                $connexion->close();
+
+
+            }
+
+            // public function importarCsv($archivo){
+            //     if (($handle = fopen($archivo, "r")) !== FALSE) {
+            //         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                        
+            //             // Alternativamente, puedes insertar los datos en una base de datos
+            //             // Ejemplo de inserción en una tabla 'miTabla'
+            //             // Reemplaza 'localhost', 'tu_usuario', 'tu_contraseña' y 'MiBaseDeDatos' con tus propios valores
+            //             $connexion = new mysqli($this->server, $this->user, $this->pass, );
+            //             $conn = new mysqli('localhost', 'tu_usuario', 'tu_contraseña', 'MiBaseDeDatos');
+            //             // $sql = "INSERT INTO miTabla (columna1, columna2, columna3) VALUES ('$data[0]', '$data[1]', '$data[2]')";
+            //             // $conn->query($sql);
+            //         }
+            //         fclose($handle);
+            //     }
+            // }
         }
     ?>
     <header>
@@ -73,8 +163,28 @@
         </nav>
     </section>
 
+    <!-- <form action="#" method="post" enctype="multipart/form-data">
+        <input type="file" name="archivo_csv[]" accept=".csv" multiple>
+        <input type="submit" value="Subir archivos">
+    </form> -->
+
     <?php
+
         $resultados = new Resultados();
+        // if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["archivos_csv"])) {
+        //     $archivos = $_FILES["archivos_csv"];
+        
+        //     foreach ($archivos['name'] as $key => $nombre) {
+        //         // Verificar si es un archivo CSV
+        //         $tipo = pathinfo($archivos["name"][$key], PATHINFO_EXTENSION);
+        //         if ($tipo !== 'csv') {
+        //             echo "Por favor, selecciona un archivo CSV válido.";
+        //             exit();
+        //         }
+        
+        //         $resultados->importarCsv($archivos["name"][$key]);
+        //     }
+        // }
     ?>
 
 </body>
