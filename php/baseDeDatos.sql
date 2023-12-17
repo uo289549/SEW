@@ -1,12 +1,22 @@
 -- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS F1Database;
+DROP DATABASE IF EXISTS F1Database;
+CREATE DATABASE F1Database;
 USE F1Database;
 
-drop table Pilotos;
-drop table GranPremio;
-drop table Clasificacion;
-drop table Carrera;
-drop table Equipos;
+-- Crear tabla GrandesPremio
+CREATE TABLE GranPremio (
+    GranPremioID INT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    NumeroDeRonda INT NOT NULL,
+    Ubicacion VARCHAR(100) NOT NULL
+);
+
+-- Crear tabla Equipos
+CREATE TABLE Equipos (
+    EquipoID INT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Nacionalidad VARCHAR(50) NOT NULL
+);
 
 -- Crear tabla Pilotos
 CREATE TABLE Pilotos (
@@ -18,14 +28,6 @@ CREATE TABLE Pilotos (
     Edad VARCHAR(50) NOT NULL,
     EquipoID INT,
     FOREIGN KEY (EquipoID) REFERENCES Equipos(EquipoID)
-);
-
--- Crear tabla GrandesPremio
-CREATE TABLE GranPremio (
-    GranPremioID INT PRIMARY KEY,
-    Nombre VARCHAR(100) NOT NULL,
-    NumeroDeRonda INT NOT NULL,
-    Ubicacion VARCHAR(100) NOT NULL
 );
 
 -- Crear tabla Clasificacion
@@ -43,11 +45,4 @@ CREATE TABLE Carrera (
     Tiempo VARCHAR(50),
     Puntos INT,
     FOREIGN KEY (PilotoID) REFERENCES Pilotos(PilotoID)
-);
-
--- Crear tabla Equipos
-CREATE TABLE Equipos (
-    EquipoID INT PRIMARY KEY,
-    Nombre VARCHAR(100) NOT NULL,
-    Nacionalidad VARCHAR(50) NOT NULL
 );

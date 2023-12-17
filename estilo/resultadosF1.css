@@ -1,0 +1,10 @@
+form{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    gap: 1%;
+}
+
+form + p{
+    text-align: center;
+}
