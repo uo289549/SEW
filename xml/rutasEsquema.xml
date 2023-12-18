@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rutas xmlns="http://tempuri.org/rutas"
+<rutas xmlns="http://www.uniovi.es"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://tempuri.org/rutas rutas.xsd">
+    xsi:schemaLocation="http://www.uniovi.es rutas.xsd">
 
     <ruta>
         <nombre>Ulsanbawi Rock</nombre>

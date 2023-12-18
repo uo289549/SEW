@@ -19,37 +19,33 @@ def obtenerCoordenadas(archivoXML):
     latitud = ""
     longitud = ""
     altitud = ""
-    primeraRuta = True
-    coordenadasCargadas = False
 
 
-    for hijo in raiz.findall('.//'):
-        print(hijo.tag.removeprefix("{http://tempuri.org/rutas}"))
-        elemento = hijo.tag.removeprefix("{http://tempuri.org/rutas}")
+    for ruta in raiz.findall('.//{http://www.uniovi.es}ruta'):
+        print(ruta.tag.removeprefix("{http://www.uniovi.es}"))
 
-        if elemento == "ruta":
-            if primeraRuta == True:
-                primeraRuta = False
-            else:
-                listaRutas.append(listaCoordenadas)
-                listaCoordenadas = []
+        coordenadas = ruta.find('.//{http://www.uniovi.es}coordenadas')
 
-        if elemento == "referencias" or elemento == "distanciaDesdeAnterior":
-            if coordenadasCargadas == False:
-                coordenadas =  longitud+ "," + latitud + "," + altitud + '\n'
-                listaCoordenadas.append(coordenadas)
-                coordenadasCargadas = True
+        latitud = coordenadas.find('.//{http://www.uniovi.es}latitud').text.removeprefix("{http://www.uniovi.es}")
+        longitud = coordenadas.find('.//{http://www.uniovi.es}longitud').text.removeprefix("{http://www.uniovi.es}")
+        altitud = coordenadas.find('.//{http://www.uniovi.es}altitud').text.removeprefix("{http://www.uniovi.es}")
 
-        if elemento == "latitud":
-            latitud = hijo.text.strip('\n')
-            coordenadasCargadas = False
-        if elemento == "longitud":
-            longitud = hijo.text.strip('\n')
-        if elemento == "altitud":
-            altitud = hijo.text.strip('\n')
+        coordenadas =  longitud+ "," + latitud + "," + altitud + '\n'
+        listaCoordenadas.append(coordenadas)
 
-    listaRutas.append(listaCoordenadas)
+        for hito in ruta.findall('.//{http://www.uniovi.es}hito'):
 
+            coordenadasHito = hito.find('.//{http://www.uniovi.es}coordenadasHito')
+
+            latitud = coordenadasHito.find('.//{http://www.uniovi.es}latitud').text.removeprefix("{http://www.uniovi.es}")
+            longitud = coordenadasHito.find('.//{http://www.uniovi.es}longitud').text.removeprefix("{http://www.uniovi.es}")
+            altitud = coordenadasHito.find('.//{http://www.uniovi.es}altitud').text.removeprefix("{http://www.uniovi.es}")
+
+            coordenadas =  longitud+ "," + latitud + "," + altitud + '\n'
+            listaCoordenadas.append(coordenadas)
+
+        listaRutas.append(listaCoordenadas)
+        listaCoordenadas = []
 
     return listaRutas
 

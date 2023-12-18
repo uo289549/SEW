@@ -18,57 +18,43 @@ def obtenerAlturas(archivoXML):
     listaAlturas = []
     altitud = ""
     distancia = "   "
-    primeraRuta = True
-    alturasCargadas = False
-    primerPto = True
     primeraAltura = ""
     primeraDistancia = "100"
     distanciaAnterior = 0
 
 
-    for hijo in raiz.findall('.//'):
-        print(hijo.tag.removeprefix("{http://tempuri.org/rutas}"))
-        elemento = hijo.tag.removeprefix("{http://tempuri.org/rutas}")
+    for ruta in raiz.findall('.//{http://www.uniovi.es}ruta'):
+        print(ruta.tag.removeprefix("{http://www.uniovi.es}"))
 
-        if elemento == "ruta":
-            if primeraRuta == True:
-                primeraRuta = False
-            else:
-                penultimoPto = str(distanciaAnterior + 100) + "," + str( 1000 - float(primeraAltura)) + '\n'
-                ultimoPto = primeraDistancia + "," + str( 1000 - float(primeraAltura))
+        coordenadas = ruta.find('.//{http://www.uniovi.es}coordenadas')
+        altitud = coordenadas.find('.//{http://www.uniovi.es}altitud').text.removeprefix("{http://www.uniovi.es}")
 
-                listaAlturas.append(penultimoPto)
-                listaAlturas.append(ultimoPto)
+        primeraAltura = altitud
+        distancia = primeraDistancia
 
-                listaRutas.append(ajustarAlturas(listaAlturas))
-                listaAlturas = []
-                primerPto = True
+        altura = distancia + "," + str( 1000 - float(altitud)) + '\n'
+        distanciaAnterior = float(distancia)
+        listaAlturas.append(altura)
 
-        if elemento == "referencias" or elemento == "galeriaFotografica":
-            if alturasCargadas == False:
-                altura = distancia + "," + str( 1000 - float(altitud)) + '\n'
-                distanciaAnterior = float(distancia)
-                listaAlturas.append(altura)
-                alturasCargadas = True
+        for hito in ruta.findall('.//{http://www.uniovi.es}hito'):
 
-        if elemento == "altitud":
-            altitud = hijo.text.strip('\n')
-            alturasCargadas = False
-            if primerPto == True:
-                primeraAltura = altitud
-                distancia = primeraDistancia
-                primerPto = False
-            else:
-                distancia = str( distanciaAnterior + 100)
+            coordenadasHito = hito.find('.//{http://www.uniovi.es}coordenadasHito')
 
-    penultimoPto = str(distanciaAnterior + 100) + "," + str( 1000 - float(primeraAltura)) + '\n'
-    ultimoPto = primeraDistancia + "," + str( 1000 - float(primeraAltura))
+            altitud = coordenadasHito.find('.//{http://www.uniovi.es}altitud').text.removeprefix("{http://www.uniovi.es}")
+            distancia = str( distanciaAnterior + 100)
 
-    listaAlturas.append(penultimoPto)
-    listaAlturas.append(ultimoPto)
+            altura = distancia + "," + str( 1000 - float(altitud)) + '\n'
+            distanciaAnterior = float(distancia)
+            listaAlturas.append(altura)
 
-    listaRutas.append(ajustarAlturas(listaAlturas))
+        penultimoPto = str(distanciaAnterior + 100) + "," + str( 1000 - float(primeraAltura)) + '\n'
+        ultimoPto = primeraDistancia + "," + str( 1000 - float(primeraAltura))
 
+        listaAlturas.append(penultimoPto)
+        listaAlturas.append(ultimoPto)
+
+        listaRutas.append(ajustarAlturas(listaAlturas))
+        listaAlturas = []
 
     return listaRutas
 
