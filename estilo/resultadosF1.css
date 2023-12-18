@@ -8,3 +8,24 @@ form{
 form + p{
     text-align: center;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+table{
+    width: fit-content;
+    margin: auto;
+}
+
+/*Especificidad: 013*/
+form[data-cargados = 'false'] {
+    display: none;
+}
+
+/*Especificidad: 013*/
+form[data-cargados = 'true'] {
+    display: flex;
+}

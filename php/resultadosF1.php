@@ -161,60 +161,234 @@
             public function crearTablaPilotos(){
 
                 $connexion = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
-                $sql = "SELECT Nombre, NumeroDeRonda, Ubicacion FROM GranPremio";
 
-                $resultado = $connexion->query($sql);
-                $fila = $resultado->fetch_assoc();
+                $consultaComprobar = "SELECT COUNT(*) as total FROM GranPremio";
+                $resultadoComprobar = $connexion->query($consultaComprobar);
+                $row = $resultadoComprobar->fetch_assoc();
+                $total_registros = $row['total'];
 
-                //creacion cabecera de la tabla
-                echo "<main>";
-                echo "<table>";
-                echo "<caption>".$fila['Nombre']." ronda nº:".$fila['NumeroDeRonda']." ubicado en ".$fila['Ubicacion']."</caption>";
-                echo "<tr>";
-                echo "<th scope= 'col' id='indice'>Indice</th>";
-                echo "<th scope= 'col' id='nombre'>Nombre</th>";
-                echo "<th scope= 'col' id='apellidos'>Apellidos</th>";
-                echo "<th scope= 'col' id='numero'>Numero</th>";
-                echo "<th scope= 'col' id='nacionalidad'>Nacionalidad</th>";
-                echo "<th scope= 'col' id='edad'>Edad</th>";
-                echo "<th scope= 'col' id='equipo'>Equipo</th>";
-                echo "</tr>";
+                if ($total_registros > 0) {
+                    $sql = "SELECT Nombre, NumeroDeRonda, Ubicacion FROM GranPremio";
 
-                //cargamos los datos de los pilotos
-                $sql = "SELECT PilotoID, Nombre, Apellidos, Numero, Nacionalidad, Edad, EquipoID FROM Pilotos";
-
-                $resultado = $connexion->query($sql);
-                while ($fila = $resultado->fetch_assoc()) {
-                    // Accede a los valores de cada fila
-
-                    $idPiloto = $fila['PilotoID'];
-
-                    echo "<tr>";
-                    echo "<th scope='row' id='".$idPiloto."' headers='indice'>".$idPiloto."</th>";
-                    echo "<td headers='".$idPiloto." nombre'>".$fila['Nombre']."</td>";
-                    echo "<td headers='".$idPiloto." apellidos'>".$fila['Apellidos']."</td>";
-                    echo "<td headers='".$idPiloto." numero'>".$fila['Numero']."</td>";
-                    echo "<td headers='".$idPiloto." nacionalidad'>".$fila['Nacionalidad']."</td>";
-                    echo "<td headers='".$idPiloto." edad'>".$fila['Edad']."</td>";
-
-                    $consulta = "SELECT Nombre FROM Equipos WHERE EquipoID=?";
-
-                    $preparedStatement = $connexion->prepare($consulta);
-                    $preparedStatement->bind_param("i",$fila['EquipoID']);
-                    $preparedStatement->execute();
-
-                    $resultado = $preparedStatement->get_result();
+                    $resultado = $connexion->query($sql);
                     $fila = $resultado->fetch_assoc();
-
-                    echo "<td headers='".$idPiloto." edad'>".$fila['Nombre']."</td>";
+    
+                    //creacion cabecera de la tabla
+                    echo "<main>";
+                    echo "<h2>".$fila['Nombre']." ronda nº:".$fila['NumeroDeRonda']." ubicado en ".$fila['Ubicacion']."</h2>";
+                    echo "<table>";
+                    echo "<caption>Pilotos participantes del ".$fila['Nombre']."</caption>";
+                    echo "<tr>";
+                    echo "<th scope= 'col' id='indice'>Indice</th>";
+                    echo "<th scope= 'col' id='nombre'>Nombre</th>";
+                    echo "<th scope= 'col' id='apellidos'>Apellidos</th>";
+                    echo "<th scope= 'col' id='numero'>Numero</th>";
+                    echo "<th scope= 'col' id='nacionalidad'>Nacionalidad</th>";
+                    echo "<th scope= 'col' id='edad'>Edad</th>";
+                    echo "<th scope= 'col' id='equipo'>Equipo</th>";
                     echo "</tr>";
+    
+                    //cargamos los datos de los pilotos
+                    $sql = "SELECT PilotoID, Nombre, Apellidos, Numero, Nacionalidad, Edad, EquipoID FROM Pilotos";
+                    $consulta = "SELECT Nombre FROM Equipos WHERE EquipoID=?";
+    
+                    $resultado = $connexion->query($sql);
+                    while ($fila = $resultado->fetch_assoc()) {
+                        // Accede a los valores de cada fila
+    
+                        $preparedStatement = $connexion->prepare($consulta);
+                        $preparedStatement->bind_param("i",$fila['EquipoID']);
+                        $preparedStatement->execute();
+    
+                        $resultadoEquipo = $preparedStatement->get_result();
+                        $filaEquipo = $resultadoEquipo->fetch_assoc();
+    
+                        $preparedStatement->close();
+    
+                        echo "<tr>";
+                        echo "<th scope='row' id='".$fila['PilotoID']."' headers='indice'>".$fila['PilotoID']."</th>";
+                        echo "<td headers='".$fila['PilotoID']." nombre'>".$fila['Nombre']."</td>";
+                        echo "<td headers='".$fila['PilotoID']." apellidos'>".$fila['Apellidos']."</td>";
+                        echo "<td headers='".$fila['PilotoID']." numero'>".$fila['Numero']."</td>";
+                        echo "<td headers='".$fila['PilotoID']." nacionalidad'>".$fila['Nacionalidad']."</td>";
+                        echo "<td headers='".$fila['PilotoID']." edad'>".$fila['Edad']."</td>";
+                        echo "<td headers='".$fila['PilotoID']." edad'>".$filaEquipo['Nombre']."</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                    echo "</main>";    
+                }else{
+                    echo"<p>No hay datos cargados</p>";
                 }
-                echo "</table>";
-                echo "</main>";
                 $connexion->close();
+            }
+
+            public function crearTablaEquipos(){
+                $connexion = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+
+                $consultaComprobar = "SELECT COUNT(*) as total FROM GranPremio";
+                $resultadoComprobar = $connexion->query($consultaComprobar);
+                $row = $resultadoComprobar->fetch_assoc();
+                $total_registros = $row['total'];
+
+                if ($total_registros > 0) {
+                    $sql = "SELECT Nombre, NumeroDeRonda, Ubicacion FROM GranPremio";
+
+                    $resultado = $connexion->query($sql);
+                    $fila = $resultado->fetch_assoc();
+    
+                    //creacion cabecera de la tabla
+                    echo "<main>";
+                    echo "<h2>".$fila['Nombre']." ronda nº:".$fila['NumeroDeRonda']." ubicado en ".$fila['Ubicacion']."</h2>";
+                    echo "<table>";
+                    echo "<caption>Equipos participantes del ".$fila['Nombre']."</caption>";
+                    echo "<tr>";
+                    echo "<th scope= 'col' id='indice'>Indice</th>";
+                    echo "<th scope= 'col' id='nombre'>Nombre</th>";
+                    echo "<th scope= 'col' id='nacionalidad'>Nacionalidad</th>";
+                    echo "</tr>";
+    
+                    //cargamos los datos de los equipos
+                    $sql = "SELECT EquipoID, Nombre, Nacionalidad FROM Equipos";
+    
+                    $resultado = $connexion->query($sql);
+                    while ($fila = $resultado->fetch_assoc()) {
+                        // Accede a los valores de cada fila
+    
+                        echo "<tr>";
+                        echo "<th scope='row' id='".$fila['EquipoID']."' headers='indice'>".$fila['EquipoID']."</th>";
+                        echo "<td headers='".$fila['EquipoID']." nombre'>".$fila['Nombre']."</td>";
+                        echo "<td headers='".$fila['EquipoID']." nacionalidad'>".$fila['Nacionalidad']."</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                    echo "</main>";
+    
+                }else{
+                    echo"<p>No hay datos cargados</p>";
+                }
+                $connexion->close();
+            }
+
+            public function crearTablaClasificacion() {
+                $connexion = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+
+                $consultaComprobar = "SELECT COUNT(*) as total FROM GranPremio";
+                $resultadoComprobar = $connexion->query($consultaComprobar);
+                $row = $resultadoComprobar->fetch_assoc();
+                $total_registros = $row['total'];
+
+                if ($total_registros > 0) {
+                    $sql = "SELECT Nombre, NumeroDeRonda, Ubicacion FROM GranPremio";
+
+                    $resultado = $connexion->query($sql);
+                    $fila = $resultado->fetch_assoc();
+    
+                    //creacion cabecera de la tabla
+                    echo "<main>";
+                    echo "<h2>".$fila['Nombre']." ronda nº:".$fila['NumeroDeRonda']." ubicado en ".$fila['Ubicacion']."</h2>";
+                    echo "<table>";
+                    echo "<caption>Clasificacion del ".$fila['Nombre']."</caption>";
+                    echo "<tr>";
+                    echo "<th scope= 'col' id='indice'>Indice</th>";
+                    echo "<th scope= 'col' id='piloto'>Piloto</th>";
+                    echo "<th scope= 'col' id='tiempo'>Tiempo</th>";
+                    echo "</tr>";
+    
+                    //cargamos los datos de la clasificacion
+                    $sql = "SELECT ClasificacionID, PilotoID, Tiempo FROM Clasificacion";
+                    $consulta = "SELECT Nombre, Apellidos FROM Pilotos WHERE PilotoID=?";
+    
+                    $resultado = $connexion->query($sql);
+                    while ($fila = $resultado->fetch_assoc()) {
+                        // Accede a los valores de cada fila
+    
+                        $preparedStatement = $connexion->prepare($consulta);
+                        $preparedStatement->bind_param("i",$fila['PilotoID']);
+                        $preparedStatement->execute();
+    
+                        $resultadoPiloto = $preparedStatement->get_result();
+                        $filaPiloto = $resultadoPiloto->fetch_assoc();
+    
+                        $preparedStatement->close();
+    
+    
+                        echo "<tr>";
+                        echo "<th scope='row' id='".$fila['ClasificacionID']."' headers='indice'>".$fila['ClasificacionID']."</th>";
+                        echo "<td headers='".$fila['ClasificacionID']." piloto'>".$filaPiloto['Nombre']." ".$filaPiloto['Apellidos']."</td>";
+                        echo "<td headers='".$fila['ClasificacionID']." tiempo'>".$fila['Tiempo']."</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                    echo "</main>";    
+                }else{
+                    echo"<p>No hay datos cargados</p>";
+                }
+                $connexion->close();
+            }
+
+            public function crearTablaCarrera(){
+                $connexion = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+
+                $consultaComprobar = "SELECT COUNT(*) as total FROM GranPremio";
+                $resultadoComprobar = $connexion->query($consultaComprobar);
+                $row = $resultadoComprobar->fetch_assoc();
+                $total_registros = $row['total'];
+
+                if ($total_registros > 0) {
+                    $sql = "SELECT Nombre, NumeroDeRonda, Ubicacion FROM GranPremio";
+
+                    $resultado = $connexion->query($sql);
+                    $fila = $resultado->fetch_assoc();
+    
+                    //creacion cabecera de la tabla
+                    echo "<main>";
+                    echo "<h2>".$fila['Nombre']." ronda nº:".$fila['NumeroDeRonda']." ubicado en ".$fila['Ubicacion']."</h2>";
+                    echo "<table>";
+                    echo "<caption>Carrera del ".$fila['Nombre']."</caption>";
+                    echo "<tr>";
+                    echo "<th scope= 'col' id='indice'>Indice</th>";
+                    echo "<th scope= 'col' id='piloto'>Piloto</th>";
+                    echo "<th scope= 'col' id='tiempo'>Tiempo</th>";
+                    echo "<th scope= 'col' id='puntos'>Puntos</th>";
+                    echo "</tr>";
+    
+                    //cargamos los datos de la carrera
+                    $sql = "SELECT CarreraID, PilotoID, Tiempo, Puntos FROM Carrera";
+                    $consulta = "SELECT Nombre, Apellidos FROM Pilotos WHERE PilotoID=?";
+    
+                    $resultado = $connexion->query($sql);
+                    while ($fila = $resultado->fetch_assoc()) {
+                        // Accede a los valores de cada fila
+    
+                        $preparedStatement = $connexion->prepare($consulta);
+                        $preparedStatement->bind_param("i",$fila['PilotoID']);
+                        $preparedStatement->execute();
+    
+                        $resultadoPiloto = $preparedStatement->get_result();
+                        $filaPiloto = $resultadoPiloto->fetch_assoc();
+    
+                        $preparedStatement->close();
+    
+    
+                        echo "<tr>";
+                        echo "<th scope='row' id='".$fila['CarreraID']."' headers='indice'>".$fila['CarreraID']."</th>";
+                        echo "<td headers='".$fila['CarreraID']." piloto'>".$filaPiloto['Nombre']." ".$filaPiloto['Apellidos']."</td>";
+                        echo "<td headers='".$fila['CarreraID']." tiempo'>".$fila['Tiempo']."</td>";
+                        echo "<td headers='".$fila['CarreraID']." puntos'>".$fila['Puntos']."</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                    echo "</main>";
+    
+                }else{
+                    echo"<p>No hay datos cargados</p>";
+                }
+                $connexion->close();                
             }
         }
     ?>
+
     <header>
         <h1>Escritorio Virtual</h1>
             <nav>
@@ -255,13 +429,33 @@
     
                 if ($accion === "crearBase") {
                     $resultados->crearBase();
-                } elseif ($accion === "cargarDatos") {
+                } 
+                elseif ($accion === "cargarDatos") {
                     $resultados->cargarDatos();
                     $resultados->crearTablaPilotos();
+                } 
+                elseif ($accion === "cargarPilotos") {
+                    $resultados->crearTablaPilotos();
+                } 
+                elseif ($accion === "cargarEquipos") {
+                    $resultados->crearTablaEquipos();
+                } 
+                elseif ($accion === "cargarClasificacion") {
+                    $resultados->crearTablaClasificacion();
+                } 
+                elseif ($accion === "cargarCarrera") {
+                    $resultados->crearTablaCarrera();
                 }
             }
         }
     ?>
+
+    <form action="#" method="post">
+        <button type="submit" name="accion" value="cargarPilotos">Mostrar Pilotos</button>
+        <button type="submit" name="accion" value="cargarEquipos">Mostrar Equipos</button>
+        <button type="submit" name="accion" value="cargarClasificacion">Mostrar Clasificacion</button>
+        <button type="submit" name="accion" value="cargarCarrera">Mostrar Carrera</button>
+    </form>
 
 </body>
 </html>
