@@ -35,7 +35,7 @@ h2{
 
 /*Especificidad: 011*/
 a:link {
-    color: #FFF;
+    color: #7d4300;
     background-color: #70C8FF;
 }
 
@@ -60,7 +60,7 @@ header nav a:visited{
 /*Especificidad: 011*/
 a:active, a:hover, a:focus{
     color: #00FF00;
-    background-color: #005B94;
+    background-color: #70C8FF;
 }
 
 /*Especificidad: 013*/
