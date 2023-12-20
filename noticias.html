@@ -31,7 +31,8 @@
             </nav>
     </header>
 
-    <input type="file" onchange="noticias.readInputFile(this.files)">
+    <label for="noticias">Cargar noticias:</label>
+    <input type="file" id="noticias" onchange="noticias.readInputFile(this.files)">
 
     <main>
         <h2>Noticias</h2>
