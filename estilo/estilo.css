@@ -36,16 +36,37 @@ h2{
 /*Especificidad: 011*/
 a:link {
     color: #FFF;
+    background-color: #70C8FF;
+}
+
+/*Especificidad: 013*/
+header nav a:link {
+    color: #FFF;
+    background-color: #005B94;
 }
 
 /*Especificidad: 011*/
 a:visited{
     color: #FFFF00;
+    background-color: #70C8FF;
+}
+
+/*Especificidad: 013*/
+header nav a:visited{
+    color: #FFFF00;
+    background-color: #005B94;
 }
 
 /*Especificidad: 011*/
 a:active, a:hover, a:focus{
     color: #00FF00;
+    background-color: #70C8FF;
+}
+
+/*Especificidad: 013*/
+header nav a:active, header nav a:hover, header nav a:focus{
+    color: #00FF00;
+    background-color: #005B94;
 }
 
 /*Especificidad: 001*/
@@ -55,6 +76,7 @@ ul {
     list-style-type : square;
 }
 
+/*Especificidad: 001*/
 ol{
     font-size: 0.9em;
     font-family: 'Times New Roman', serif;
@@ -99,6 +121,7 @@ th{
     border: 0.1em inset #FF0000;
     padding: 0.4em;
     background-color: #0094F0;
+    color: #000000;
 }
 
 /*Especificidad: 001*/
@@ -111,6 +134,7 @@ td{
 /*Especificidad: 011*/
 tr:nth-child(odd){
     background-color: #99D8FF;
+    color: #000000;
 }
 
 /*Especificidad: 001*/
@@ -123,6 +147,6 @@ img, video{
 @media screen and (max-width: 465px) {
     /*Especificidad: 001*/
     video{
-        width: 80%;
+        width: 80%; /*Redefinicion para adaptar el tamaño del video a moviles*/
     }
 }

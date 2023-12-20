@@ -1,27 +1,32 @@
+/*Especificidad: 001*/
 form{
     display: flex;
     flex-direction: column;
     margin: auto;
     width: fit-content;
-    margin-top: 2em;
     gap: 1%;
 }
 
+/*Especificidad: 001*/
 p{
     text-align: center;
+    margin-bottom: 2em;
 }
 
+/*Especificidad: 001*/
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+/*Especificidad: 001*/
 table{
     width: fit-content;
     margin: auto;
 }
 
+/*Especificidad: 011*/
 form[name="botones"]{
     flex-direction: row;
     justify-content: center;

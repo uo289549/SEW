@@ -77,7 +77,7 @@ article[data-state = "flip"], article[data-state = "revealed"]{
 
 /*Especificidad: 011*/
 article[data-state = "revealed"]{
-    transform: rotateY(180deg);
+    transform: rotateY(180deg); /*Redefinicion para mostrar la carta*/
 }
 
 /*Estilo para moviles*/
@@ -85,6 +85,6 @@ article[data-state = "revealed"]{
 
     /*Especificidad: 001*/
     section{
-        max-width: 80%;
+        max-width: 80%; /*Redefinicion para adaptar la disposicion de las cartas a moviles*/
     }
 }

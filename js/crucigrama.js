@@ -10,6 +10,7 @@ class Crucigrama{
         this.dificultadSeleccionada = dificultad;
         this.escogerDificultad(dificultad);
         this.iniciarTablero();
+        this.crearInstrucciones();
 
         this.eventoPulsacion = (event) => this.pulsarTecla(event);
     }

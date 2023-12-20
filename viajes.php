@@ -58,7 +58,7 @@
 
             for($i=0;$i<$perPage;$i++) {
             
-                $titulo = $json->items[$i]->title;
+                $titulo = "Imagen del carrusel ".($i+1);
                 $URLfoto = $json->items[$i]->media->m;
 
                 print "<img src='".$URLfoto."' alt='".$titulo."'/>";

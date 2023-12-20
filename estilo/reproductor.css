@@ -37,7 +37,7 @@ main section section {
 }
 
 /*Especificidad: 012*/
-section[data-vacia = 'true'] aside,  section[data-vacia = 'true'] section h3{
+section[data-vacia = 'true'] aside{
     display: none;
 }
 

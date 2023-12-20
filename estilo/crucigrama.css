@@ -28,11 +28,13 @@ p {
     border: 0.1em solid #000;
     font-size: 1.5em;
     background-color: #A8C1E1;
+    color: #000000;
 }
 
 /*Especificidad: 011*/
 p[data-state = 'empty'] {
     background-color: #000;
+    color: #000001;
 }
 
 /*Especificidad: 011*/
@@ -65,6 +67,7 @@ ol{
     border-radius: 0.3em;
     width: fit-content;
     background-color: #A8C1E1;
+    color: #000000;
 }
 
 /*Especificidad: 001*/
@@ -73,14 +76,17 @@ li{
     width: fit-content;
 }
 
+/*Especificidad: 001*/
 article{
     border: 0.1em solid #000;
     border-radius: 0.3em;
     width: fit-content;
     background-color: #A8C1E1;
+    color: #000000;
     margin: 1em;
 }
 
+/*Especificidad: 002*/
 article p {
     border: none;
     font-size: 1em;
@@ -90,24 +96,24 @@ article p {
 @media screen and (max-width: 465px) {
     /*Especificidad: 001*/
     main{
-        width: fit-content;
+        width: fit-content; /*Redefinicion para adaptar el tamaño del crucigrama a moviles*/
     }
 
     /*Especificidad: 001*/
     p{
-        font-size: 0.9em;
+        font-size: 0.9em; /*Redefinicion para adaptar el tamaño del crucigrama a moviles*/
     }
 }
 
-/*Estilo para moviles*/
+/*Estilo para tablets*/
 @media screen and (max-width: 1200px) {
     /*Especificidad: 001*/
     main{
-        width: fit-content;
+        width: fit-content; /*Redefinicion para adaptar el tamaño del crucigrama a tablets*/
     }
 
     /*Especificidad: 001*/
     p{
-        font-size: 0.9em;
+        font-size: 0.9em; /*Redefinicion para adaptar el tamaño del crucigrama a tablets*/
     }
 }

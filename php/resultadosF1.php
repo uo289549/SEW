@@ -394,6 +394,78 @@
                 }
                 $connexion->close();                
             }
+
+            public function exportarCSV(){
+
+                $tablas = array('Equipos','Pilotos','Clasificacion','Carrera');
+
+                $tablas = array(
+                    array('Equipos'),
+                    array('Pilotos'),
+                    array('Clasificacion'),
+                    array('Carrera')
+                );
+
+                $nombreFichero = "GranPremio.csv";
+
+                $connexion = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+
+                $consultaGranPremio = "SELECT * FROM GranPremio";
+                $consultaEquipos = "SELECT * FROM Equipos";
+                $consultaPilotos = "SELECT * FROM Pilotos";
+                $consultaClasificacion = "SELECT * FROM Clasificacion";
+                $consultaCarrera = "SELECT * FROM Carrera";
+
+                $resultadoGranPremio = $connexion->query($consultaGranPremio);
+                $resultadoEquipos = $connexion->query($consultaEquipos);
+                $resultadoPilotos = $connexion->query($consultaPilotos);
+                $resultadoClasificacion = $connexion->query($consultaClasificacion);
+                $resultadoCarrera = $connexion->query($consultaCarrera);
+
+                $fichero = fopen($nombreFichero, "w");
+
+                //exportamos tabla GranPremio
+                foreach ($resultadoGranPremio as $fila) {
+                    fputcsv($fichero, $fila);
+                }
+
+                //exportamos tabla Equipos
+                fputcsv($fichero,$tablas[0]);
+                foreach ($resultadoEquipos as $fila) {
+                    fputcsv($fichero, $fila);
+                }
+
+                //exportamos tabla Pilotos
+                fputcsv($fichero,$tablas[1]);
+                foreach ($resultadoPilotos as $fila) {
+                    fputcsv($fichero, $fila);
+                }
+
+                //exportamos tabla Clasificacion
+                fputcsv($fichero,$tablas[2]);
+                foreach ($resultadoClasificacion as $fila) {
+                    fputcsv($fichero, $fila);
+                }
+
+                //exportamos tabla Carrera
+                fputcsv($fichero,$tablas[3]);
+                foreach ($resultadoCarrera as $fila) {
+                    fputcsv($fichero, $fila);
+                }
+
+                fclose($fichero);
+
+                $nombreDescarga = basename($nombreFichero);
+                $filePath = "" . $nombreDescarga;
+                if (!empty($nombreDescarga) && file_exists($filePath)) {
+                    header("Cache-Control: public");
+                    header("Content-Description: File Transfer");
+                    header("Content-Disposition: attachment; filename=$nombreDescarga");
+                    header("Content-Type: text/csv");
+                    header("Content-Transfer-Encoding: binary");
+                    readfile($filePath);
+                }
+            }
         }
     ?>
 
@@ -431,6 +503,8 @@
 
         <label for="ConfirmarCarga">Cargar csv seleccionados en la base de datos:</label>
         <input type="submit" id="ConfirmarCarga" value="Subir Archivos" name="submit">
+
+        <button type="submit" name="accion" value="exportarCSV">Exportar CSV</button>
     </form>
 
     <?php
@@ -442,7 +516,10 @@
     
                 if ($accion === "crearBase") {
                     $resultados->crearBase();
-                } 
+                }
+                elseif($accion === "exportarCSV"){
+                    $resultados->exportarCSV();
+                }
                 elseif ($accion === "cargarPilotos") {
                     $resultados->crearTablaPilotos();
                 } 

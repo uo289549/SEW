@@ -28,14 +28,14 @@ section[data-type=botonera] button {
 @media screen and (max-width: 465px) {
     /*Especificidad: 011*/
     section[data-type=botonera]{
-        display: flex;
+        display: flex; /*Redefinicion para mostrar la botonera en moviles*/
     }
 }
 
-/*Estilo para moviles*/
+/*Estilo para tablets*/
 @media screen and (max-width: 1200px) {
     /*Especificidad: 011*/
     section[data-type=botonera]{
-        display: flex;
+        display: flex; /*Redefinicion para mostrar la botonera en tablets*/
     }
 }

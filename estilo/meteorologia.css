@@ -43,11 +43,11 @@ article {
 @media screen and (max-width: 465px) {
     /*Especificidad: 001*/
     section{
-        flex-direction: column;
+        flex-direction: column; /*Redefinicion para que cada prevision ocupe una fila entera en moviles*/
     }
 
     /*Especificidad: 001*/
     article{
-        width: fit-content;
+        width: fit-content; /*Redefinicion para adaptar el tamaño de cada prevision a moviles*/
     }
 }

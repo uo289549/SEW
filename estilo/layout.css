@@ -16,13 +16,13 @@ nav{
 @media screen and (max-width: 465px) {
     /*Especificidad: 001*/
     header{
-        flex-direction: column;
-        gap: 1em;
+        flex-direction: column; /*Redefinicion para adaptar la disposicion del encabezado a moviles*/
+        gap: 1em; /*Redefinicion para adaptar distancia entre elementos del encabezado a moviles*/
     }
 
     /*Especificidad: 001*/
     nav{
-        flex-wrap: wrap;
+        flex-wrap: wrap; /*Redefinicion para adaptar la disposicion del encabezado a moviles*/
     }
 }
 
@@ -30,12 +30,12 @@ nav{
 @media screen and (max-width: 1200px) {
     /*Especificidad: 001*/
     header{
-        gap: 1em;
-        flex-wrap: wrap;
+        gap: 1em; /*Redefinicion para adaptar distancia entre elementos del encabezado a tablets*/
+        flex-wrap: wrap; /*Redefinicion para adaptar la disposicion del encabezado a tablets*/
     }
 
     /*Especificidad: 001*/
     nav{
-        font-size: 1.2em;
+        font-size: 1.2em; /*Redefinicion para adaptar el tamaño de los enlaces a tablets*/
     }
 }

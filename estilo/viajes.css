@@ -89,16 +89,19 @@ section+section article article {
 /*Especificidad: 014*/
 section+section article a:link {
     color: #FD5703;
+    background-color: #63FCE8;
 }
 
 /*Especificidad: 014*/
 section+section article a:visited{
     color: #9B0000;
+    background-color: #63FCE8;
 }
 
 /*Especificidad: 014*/
 section+section article a:active, section+section article a:hover, section+section article a:focus{
     color: #B729FC;
+    background-color: #63FCE8;
     
 }
 
@@ -159,6 +162,7 @@ section+section+section+section+section button{
     z-index: 10;
     cursor: pointer;
     background-color: #fff;
+    color: #000;
     font-size: 1em;
 }
 
@@ -194,14 +198,14 @@ section+section+section+section+section button[data-action=next] {
 
     /*Especificidad: 004*/
     section+section article img{
-        margin: 1em;
-        width: 80%;
-        height: 80%;
+        margin: 1em; /*Redefinicion para adaptar el tamaño de las imagenes a moviles*/
+        width: 80%; /*Redefinicion para adaptar el tamaño de las imagenes a moviles*/
+        height: 80%; /*Redefinicion para adaptar el tamaño de las imagenes a moviles*/
     }
 
     /*Especificidad: 004*/
     section+section+section article{
-        width: 26em;
-        height: 26em;
+        width: 26em; /*Redefinicion para adaptar el tamaño del mapa a moviles*/
+        height: 26em; /*Redefinicion para adaptar el tamaño del mapa a moviles*/
     }
 }

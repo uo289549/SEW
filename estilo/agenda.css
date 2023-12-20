@@ -45,12 +45,12 @@ article h3{
     font-weight: bold;
 }
 
-/*Estilo para moviles*/
+/*Estilo para tablets*/
 @media screen and (max-width: 1200px) {
 
     /*Especificidad: 001*/
     article{
-        width: 30%;
+        width: 30%; /*Redefinicion para adaptar el tamaño de los grandes premios a tablets*/
     }
 }
 
@@ -58,11 +58,11 @@ article h3{
 @media screen and (max-width: 465px) {
     /*Especificidad: 001*/
     section{
-        flex-direction: column;
+        flex-direction: column; /*Redefinicion para mostrar un grand premio en cada fila en moviles*/
     }
 
     /*Especificidad: 001*/
     article{
-        width: fit-content;
+        width: fit-content; /*Redefinicion para adaptar el tamaño de los grandes premios a moviles*/
     }
 }
