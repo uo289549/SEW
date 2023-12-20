@@ -28,7 +28,6 @@ p {
     border: 0.1em solid #000;
     font-size: 1.5em;
     background-color: #A8C1E1;
-    /* #6395CA */
 }
 
 /*Especificidad: 011*/
@@ -74,10 +73,41 @@ li{
     width: fit-content;
 }
 
+article{
+    border: 0.1em solid #000;
+    border-radius: 0.3em;
+    width: fit-content;
+    background-color: #A8C1E1;
+    margin: 1em;
+}
+
+article p {
+    border: none;
+    font-size: 1em;
+}
+
 /*Estilo para moviles*/
 @media screen and (max-width: 465px) {
     /*Especificidad: 001*/
     main{
         width: fit-content;
+    }
+
+    /*Especificidad: 001*/
+    p{
+        font-size: 0.9em;
+    }
+}
+
+/*Estilo para moviles*/
+@media screen and (max-width: 1200px) {
+    /*Especificidad: 001*/
+    main{
+        width: fit-content;
+    }
+
+    /*Especificidad: 001*/
+    p{
+        font-size: 0.9em;
     }
 }

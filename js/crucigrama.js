@@ -334,4 +334,64 @@ class Crucigrama{
     
         });
     }
+
+    crearInstrucciones(){
+        const article = document.querySelector('article');
+        let p = document.createElement('p');
+        switch(this.dificultadSeleccionada){
+            case "facil":
+                p.textContent = "Esto es un crucigrama matematico que consiste en rellenar las casillas vacias con los numeros que resuelvan las operaciones en vertical y horizontal. Ejemplo: tenemos una casilla con un '2', la siguiente con un '+', la siguiente vacia, la siguiente con un '=' y la siguiente con un 5. En este caso en la casilla vacia habria que introducir un '3'.";
+                article.appendChild(p);
+
+                p = document.createElement('p');
+                p.textContent = "Si te equivocas al introducir un numero solo tienes que volver a seleccionar la casilla deseada e introducir el numero deseado.";
+                article.appendChild(p);
+
+                p = document.createElement('p');
+                p.textContent = "Para resolver el crucigrama desde un ordenador debe primero clicar en la casilla vacia en la que quiere introducir el numero y seguido de esto pulsar en el teclado el numero que deseas introducir. En caso de ser el correcto se pintara en la casilla seleccionada, en caso de que no lo sea se le indicara que no era el numero correcto.";
+                article.appendChild(p);
+
+                p = document.createElement('p');
+                p.textContent = "Para resolver el crucigrama desde una pantalla tactil debe primero pulsar la casilla vacia en la que quiere introducir el numero y seguido de esto pulsar en los botones situados debajo del crucigrama el numero que deseas introducir. En caso de ser el correcto se pintara en la casilla seleccionada, en caso de que no lo sea se le indicara que no era el numero correcto.";
+                article.appendChild(p);
+
+                break;
+            case "medio":
+                
+                p.textContent = "Esto es un crucigrama matematico que consiste en rellenar las casillas vacias con los numeros que resuelvan las operaciones en vertical y horizontal. Ejemplo: tenemos una casilla con un '2', la siguiente con un '+', la siguiente vacia, la siguiente con un '=' y la siguiente con un 5. En este caso en la casilla vacia habria que introducir un '3'.";
+                article.appendChild(p);
+
+                p = document.createElement('p');
+                p.textContent = "Si te equivocas al introducir un numero solo tienes que volver a seleccionar la casilla deseada e introducir el numero deseado.";
+                article.appendChild(p);
+
+                p = document.createElement('p');
+                p.textContent = "Para resolver el crucigrama desde un ordenador debe primero clicar en la casilla vacia en la que quiere introducir el numero y seguido de esto pulsar en el teclado el numero que deseas introducir. En caso de ser el correcto se pintara en la casilla seleccionada, en caso de que no lo sea se le indicara que no era el numero correcto";
+                article.appendChild(p);
+
+                p = document.createElement('p');
+                p.textContent = "Para resolver el crucigrama desde una pantalla tactil debe primero pulsar la casilla vacia en la que quiere introducir el numero y seguido de esto pulsar en los botones situados debajo del crucigrama el numero que deseas introducir. En caso de ser el correcto se pintara en la casilla seleccionada, en caso de que no lo sea se le indicara que no era el numero correcto.";
+                article.appendChild(p);
+                
+                break;
+            case "dificil":
+
+                p.textContent = "Esto es un crucigrama matematico que consiste en rellenar las casillas vacias con los numeros y operandos que resuelvan las operaciones en vertical y horizontal. Ejemplo: tenemos una casilla con un '2', la siguiente con un '+', la siguiente vacia, la siguiente con un '=' y la siguiente con un 5. En este caso en la casilla vacia habria que introducir un '3'. Otro ejemplo: tenemos una casilla con un '2', la siguiente vacia, la siguiente con un '3', la siguiente con un '=' y la siguiente con un 5. En este caso en la casilla vacia habria que introducir un '+'.";
+                article.appendChild(p);
+
+                p = document.createElement('p');
+                p.textContent = "Si te equivocas al introducir un numero/operando solo tienes que volver a seleccionar la casilla deseada e introducir el numero/operando deseado.";
+                article.appendChild(p);
+
+                p = document.createElement('p');
+                p.textContent = "Para resolver el crucigrama desde un ordenador debe primero clicar en la casilla vacia en la que quiere introducir el numero u operando y seguido de esto pulsar en el teclado en numero u operando que deseas introducir. En caso de ser el correcto se pintara en la casilla seleccionada, en caso de que no lo sea se le indicara que no era el numero u operando correcto";
+                article.appendChild(p);
+
+                p = document.createElement('p');
+                p.textContent = "Para resolver el crucigrama desde una pantalla tactil debe primero pulsar la casilla vacia en la que quiere introducir el numero u operando y seguido de esto pulsar en los botones situados debajo del crucigrama el numero u operando que deseas introducir. En caso de ser el correcto se pintara en la casilla seleccionada, en caso de que no lo sea se le indicara que no era el numero u operando correcto.";
+                article.appendChild(p);
+
+                break;
+        }
+    }
 }

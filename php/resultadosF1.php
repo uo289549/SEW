@@ -53,7 +53,7 @@
                 $connexion->close();
             }
 
-            public function cargarDatos() {
+            public function cargarDatos($nombreArchivo){
 
                 $connexion = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
 
@@ -65,90 +65,98 @@
                     $total_registros = $row['total'];
                 
                     if ($total_registros == 0) {
-                        //cargamos la tabla de GranPremio
-                        $archivo = fopen('GranPremio.csv', 'r');
+
+                        $archivo = fopen($nombreArchivo, 'r');
         
-                        $consulta = "INSERT INTO GranPremio (GranPremioID, Nombre, NumeroDeRonda, Ubicacion) VALUES (?, ?, ?, ?)";
-                        $preparedStatement = $connexion->prepare($consulta);
-        
-                        while (($data = fgetcsv($archivo, 1000, ",")) !== FALSE) {
-        
-                            $preparedStatement->bind_param("isis",$data[0],$data[1],$data[2],$data[3]);
-                            if(!$preparedStatement->execute()){
-                                echo "<p>Error al insertar los datos del gran premio: ". $connexion->error."</p>";
-                            }
-                        }
-                        $preparedStatement->close();
-                        fclose($archivo);
-        
-                        //cargamos la tabla de Equipos
-                        $archivo = fopen('Equipos.csv', 'r');
-        
-                        $consulta = "INSERT INTO Equipos (EquipoID, Nombre, Nacionalidad) VALUES (?, ?, ?)";
-                        $preparedStatement = $connexion->prepare($consulta);
-        
-                        while (($data = fgetcsv($archivo, 1000, ",")) !== FALSE) {
-        
-                            $preparedStatement->bind_param("iss",$data[0],$data[1],$data[2]);
-                            if(!$preparedStatement->execute()){
-                                echo "<p>Error al insertar los datos de los equipos: ". $connexion->error."</p>";
-                            }
-                        }
-                        $preparedStatement->close();
-        
-                        fclose($archivo);
-        
-                        //cargamos la tabla de Pilotos
-                        $archivo = fopen('Pilotos.csv', 'r');
+                        $consultaGranPremio = "INSERT INTO GranPremio (GranPremioID, Nombre, NumeroDeRonda, Ubicacion) VALUES (?, ?, ?, ?)";
+                        $consultaEquipos = "INSERT INTO Equipos (EquipoID, Nombre, Nacionalidad) VALUES (?, ?, ?)";
+                        $consultaPilotos = "INSERT INTO Pilotos (PilotoID, Nombre, Apellidos, Numero, Nacionalidad, Edad, EquipoID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                        $consultaClasificacion = "INSERT INTO Clasificacion (ClasificacionID, PilotoID, Tiempo) VALUES (?, ?, ?)";
+                        $consultaCarrera = "INSERT INTO Carrera (CarreraID, PilotoID, Tiempo, Puntos) VALUES (?, ?, ?, ?)";
+
+
                         
-                        $consulta = "INSERT INTO Pilotos (PilotoID, Nombre, Apellidos, Numero, Nacionalidad, Edad, EquipoID) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                        $preparedStatement = $connexion->prepare($consulta);
+                        $preparedStatementGranPremio = $connexion->prepare($consultaGranPremio);
+                        $preparedStatementEquipos = $connexion->prepare($consultaEquipos);
+                        $preparedStatementPilotos = $connexion->prepare($consultaPilotos);
+                        $preparedStatementClasificacion = $connexion->prepare($consultaClasificacion);
+                        $preparedStatementCarrera = $connexion->prepare($consultaCarrera);
+
+                        $tabla = "GranPremio";
+                        $cambioTabla = 0;
         
                         while (($data = fgetcsv($archivo, 1000, ",")) !== FALSE) {
-        
-                            $preparedStatement->bind_param("isssssi",$data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6]);
-                            if(!$preparedStatement->execute()){
-                                echo "<p>Error al insertar los datos de los pilotos: ". $connexion->error."</p>";
+
+                            if($cambioTabla === 1){
+                                $cambioTabla = 0;
                             }
-                        }
-                        $preparedStatement->close();
-        
-        
-                        fclose($archivo);
-        
-                        //cargamos la tabla de Clasificacion
-                        $archivo = fopen('Clasificacion.csv', 'r');
-        
-                        $consulta = "INSERT INTO Clasificacion (ClasificacionID, PilotoID, Tiempo) VALUES (?, ?, ?)";
-                        $preparedStatement = $connexion->prepare($consulta);
-        
-                        while (($data = fgetcsv($archivo, 1000, ",")) !== FALSE) {
-        
-                            $preparedStatement->bind_param("iis",$data[0],$data[1],$data[2]);
-                            if(!$preparedStatement->execute()){
-                                echo "<p>Error al insertar los datos de la clasificacion: ". $connexion->error."</p>";
+
+                            //cargamos la consulta para la tabla correspondiente
+                            if($data[0] == "Equipos"){
+                                $tabla = "Equipos";
+                                $cambioTabla = 1;
                             }
-                        }
-                        $preparedStatement->close();
-        
-                        fclose($archivo);
-        
-                        //cargamos la tabla de Carrera
-                        $archivo = fopen('Carrera.csv', 'r');
-        
-                        $consulta = "INSERT INTO Carrera (CarreraID, PilotoID, Tiempo, Puntos) VALUES (?, ?, ?, ?)";
-                        $preparedStatement = $connexion->prepare($consulta);
-        
-                        while (($data = fgetcsv($archivo, 1000, ",")) !== FALSE) {
-        
-                            $preparedStatement->bind_param("iisi",$data[0],$data[1],$data[2],$data[3]);
-                            if(!$preparedStatement->execute()){
-                                echo "<p>Error al insertar los datos de la carrera: ". $connexion->error."</p>";
+                            if($data[0] == "Pilotos"){
+                                $tabla = "Pilotos";
+                                $cambioTabla = 1;
                             }
+                            if($data[0] == "Clasificacion"){
+                                $tabla = "Clasificacion";
+                                $cambioTabla = 1;
+                            }
+                            if($data[0] == "Carrera"){
+                                $tabla = "Carrera";
+                                $cambioTabla = 1;
+                            }
+
+                            //insertamos los datos del gran premio
+                            if($tabla === "GranPremio" && $cambioTabla === 0){
+                                $preparedStatementGranPremio->bind_param("isis",$data[0],$data[1],$data[2],$data[3]);
+                                if(!$preparedStatementGranPremio->execute()){
+                                    echo "<p>Error al insertar los datos del gran premio: ". $connexion->error."</p>";
+                                }
+                            }
+
+                            //insertamos los datos de los equipos
+                            if($tabla === "Equipos" && $cambioTabla === 0){    
+                                $preparedStatementEquipos->bind_param("iss",$data[0],$data[1],$data[2]);
+                                if(!$preparedStatementEquipos->execute()){
+                                    echo "<p>Error al insertar los datos de los equipos: ". $connexion->error."</p>";
+                                }
+                            }
+
+                            //insertamos los datos de los pilotos
+                            if($tabla === "Pilotos" && $cambioTabla === 0){
+                                $preparedStatementPilotos->bind_param("isssssi",$data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6]);
+                                if(!$preparedStatementPilotos->execute()){
+                                    echo "<p>Error al insertar los datos de los pilotos: ". $connexion->error."</p>";
+                                }    
+                            }
+
+                            //insertamos los datos de la clasificacion
+                            if($tabla === "Clasificacion" && $cambioTabla === 0){    
+                                $preparedStatementClasificacion->bind_param("iis",$data[0],$data[1],$data[2]);
+                                if(!$preparedStatementClasificacion->execute()){
+                                    echo "<p>Error al insertar los datos de la clasificacion: ". $connexion->error."</p>";
+                                }    
+                            }
+
+                            //insertamos los datos de la carrera
+                            if($tabla === "Carrera" && $cambioTabla === 0){
+                                $preparedStatementCarrera->bind_param("iisi",$data[0],$data[1],$data[2],$data[3]);
+                                if(!$preparedStatementCarrera->execute()){
+                                    echo "<p>Error al insertar los datos de la carrera: ". $connexion->error."</p>";
+                                }    
+                            }
+
                         }
-                        $preparedStatement->close();
-        
+                        $preparedStatementGranPremio->close();
+                        $preparedStatementEquipos->close();
+                        $preparedStatementPilotos->close();
+                        $preparedStatementClasificacion->close();
+                        $preparedStatementCarrera->close();
                         fclose($archivo);
+
                     } else {
                         echo "<p>Datos ya cargados en la base de datos</p>";
                     }
@@ -413,11 +421,16 @@
         </nav>
     </section>
 
-    <p>Los datos de referencia a importar son los csv de "Carrera", "Clasificacion", "Equipos", "GranPremio" y "Pilotos"; ubicados en la carpeta php del proyecto. Si quiere importar los datos del gran premio que prefiera, modifique los csv siguiendo el esquema que tienen.</p>
+    <p>Los archivos a importar deben tener estos nombres: "Carrera.csv","Clasificacion.csv","Equipos.csv","GranPremio.csv","Pilotos.csv"</p>
 
-    <form action="#" method="post">
+    <form action="#" method="post" enctype="multipart/form-data">
         <button type="submit" name="accion" value="crearBase">Crear base de datos</button>
-        <button type="submit" name="accion" value="cargarDatos">Cargar datos en la base</button>
+
+        <label for="seleccionarArchivos">Selecciona los csv a importar:</label>
+        <input type="file" id="seleccionarArchivos" name="archivoCSV" accept=".csv">
+
+        <label for="ConfirmarCarga">Cargar csv seleccionados en la base de datos:</label>
+        <input type="submit" id="ConfirmarCarga" value="Subir Archivos" name="submit">
     </form>
 
     <?php
@@ -429,10 +442,6 @@
     
                 if ($accion === "crearBase") {
                     $resultados->crearBase();
-                } 
-                elseif ($accion === "cargarDatos") {
-                    $resultados->cargarDatos();
-                    $resultados->crearTablaPilotos();
                 } 
                 elseif ($accion === "cargarPilotos") {
                     $resultados->crearTablaPilotos();
@@ -447,10 +456,21 @@
                     $resultados->crearTablaCarrera();
                 }
             }
+
+            if (isset($_POST['submit'])) {
+                if (isset($_FILES["archivoCSV"]) ) {
+
+                    $nombre_temporal = $_FILES["archivoCSV"]["tmp_name"];
+                    $resultados->cargarDatos($nombre_temporal);
+                    $resultados->crearTablaPilotos();
+                } else {
+                    echo "<p>Por favor, selecciona un archivo para subir.</p>";
+                }
+            }
         }
     ?>
 
-    <form action="#" method="post">
+    <form action="#" method="post" name="botones">
         <button type="submit" name="accion" value="cargarPilotos">Mostrar Pilotos</button>
         <button type="submit" name="accion" value="cargarEquipos">Mostrar Equipos</button>
         <button type="submit" name="accion" value="cargarClasificacion">Mostrar Clasificacion</button>

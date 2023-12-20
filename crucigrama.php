@@ -100,6 +100,10 @@
         <a title="Resultados" accesskey="F" tabindex="12" href= "php/resultadosF1.php">Resultados F1</a>
     </nav>
 
+    <article>
+        <h2>Instrucciones de Uso</h2>
+    </article>
+
     <h2>Crucigrama</h2>
     <main>
     </main>

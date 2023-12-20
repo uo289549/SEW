@@ -1,11 +1,13 @@
 form{
     display: flex;
-    justify-content: center;
-    margin-top: 1em;
+    flex-direction: column;
+    margin: auto;
+    width: fit-content;
+    margin-top: 2em;
     gap: 1%;
 }
 
-form + p{
+p{
     text-align: center;
 }
 
@@ -20,12 +22,7 @@ table{
     margin: auto;
 }
 
-/*Especificidad: 013*/
-form[data-cargados = 'false'] {
-    display: none;
-}
-
-/*Especificidad: 013*/
-form[data-cargados = 'true'] {
-    display: flex;
+form[name="botones"]{
+    flex-direction: row;
+    justify-content: center;
 }
